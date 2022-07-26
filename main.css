@@ -1,0 +1,47 @@
+.resume{
+    max-height: 100vh;
+    overflow-y: scroll;
+    font-family: sans-serif;
+}
+.divider{
+    background-color: black;
+    width: 65%;
+    height: 0.5%;
+    margin-bottom: 2%;
+}
+.tittle{
+    margin-top: 1%;
+    padding: 1%;
+    background-color:rgb(207, 207, 207);
+    color: black;
+}
+.subtittle{
+    padding-top: 2%;
+}
+.right-box{
+    padding: 1%;
+}
+.experience, .links, .education, .contact{
+    list-style-type: none; 
+}
+p{
+    font-size: 1vw;
+    line-height: 0vh;
+}
+li{
+    line-height: 1.5;
+    font-size: 1vw;
+}
+h1{
+    font-size: 3vw;
+    line-height: 0.9;
+    font-style: bold;
+    color: black;
+}
+h2{
+    font-size: 2vw;
+    color: black;
+}
+h3{
+    font-size: 1.5vw;
+}
