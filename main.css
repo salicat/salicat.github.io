@@ -1,6 +1,7 @@
 html{
     background-color: black;
 }
+
 .resume{
     overflow-x: hidden;
     overflow-y: scroll;
@@ -36,6 +37,8 @@ p{
 }
 li{
     line-height: 1.5;
-    font-size: 1vw;
+    font-size: 1.2vw;
 }
-
+a{
+    font-style:italic;
+}
