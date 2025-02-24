@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>John Doe | Tech Lead Full Stack</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+        }
+    
+        :root {
+            --gradient-1: linear-gradient(135deg, #6366f1 0%, #4338ca 100%);
+            --gradient-2: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+            --dark: #0f172a;
+            --light: #f8fafc;
+            --accent: #f59e0b;
+            
+            /* Nuevas variables para modo oscuro */
+            --dark-bg: #0f172a;
+            --dark-text: #f8fafc;
+            --dark-card: #1e293b;
+            --dark-border: #334155;
+        }
+        
+        body {
+            background: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
+            transition: background 0.8s ease, color 0.8s ease;
+        }
+    
+        /* Modo oscuro */
+        body.dark-mode {
+            --gradient-1: linear-gradient(135deg, #818cf8 0%, #4f46e5 100%);
+            --gradient-2: linear-gradient(135deg, #60a5fa 0%, #3b82f6 100%);
+            --dark: var(--dark-text);
+            --light: var(--dark-bg);
+            --accent: #fbbf24;
+        }
+    
+        .hero {
+            background: var(--gradient-1);
+            color: white;
+            padding: 6rem 2rem 4rem;
+            text-align: center;
+            position: relative;
+            clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
+        }
+    
+        .profile-img {
+            width: 220px;
+            height: 220px;
+            border-radius: 50%;
+            border: 4px solid white;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            margin: 1rem auto;
+            transition: transform 0.3s ease;
+        }
+    
+        .profile-img:hover {
+            transform: scale(1.05);
+        }
+    
+        .skills-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 2rem auto;
+        }
+
+        .skill-item {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 2rem;
+            border-radius: 1rem;
+            backdrop-filter: blur(10px);
+            transition: transform 0.3s ease;
+        }
+
+        .skill-item:hover {
+            transform: translateY(-5px);
+        }
+
+    
+        .skill-icon {
+            font-size: 2.5rem;
+            color: var(--accent);
+            margin-bottom: 1rem;
+        }
+    
+        section {
+            padding: 5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+    
+        .section-title {
+            font-size: 2.8rem;
+            text-align: center;
+            margin-bottom: 4rem;
+            position: relative;
+            color: var(--dark);
+            transition: color 0.3s ease;
+        }
+    
+        .section-title:after {
+            content: '';
+            width: 60px;
+            height: 4px;
+            background: var(--accent);
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 2px;
+        }
+    
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2.5rem;
+            margin-top: 3rem;
+        }
+    
+        .project-card {
+            background: var(--light);
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease, color 0.3s ease;
+            position: relative;
+        }
+        
+        .dark-mode .project-card {
+            box-shadow: 0 10px 15px -3px rgba(111, 255, 147, 0.178);
+        }
+
+        .project-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 25px 50px -12px rgba(0,0,0,0.15);
+        }
+        
+        .project-badge {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background-color: rgb(80, 157, 3);
+            color: white;
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+    
+        .project-thumbnail {
+            width: 100%;
+            height: 240px;
+            object-fit: cover;
+            border-bottom: 4px solid var(--accent);
+        }
+        
+        .project-icon {
+            font-size: 1.5rem;
+            color: var(--dark);
+            transition: color 0.3s ease;
+        }
+
+        .dark-mode .project-icon {
+            color: var(--light);
+        }
+
+        .dark-mode .fa-github {
+            color: white;
+            filter: brightness(1.5);
+        }
+
+        .dark-mode .fa-external-link-alt{
+            color: white !important;
+            filter: brightness(1.5);
+        }
+        
+        .icon-text {
+            color: var(--dark); /* Color en modo claro */
+            transition: color 0.3s ease;
+        }
+
+        .dark-mode .icon-text {
+            color: white; /* Color en modo oscuro */
+        }
+
+        .project-content {
+            padding: 1.5rem;
+        }
+    
+        .tech-stack {
+            display: flex;
+            gap: 0.8rem;
+            flex-wrap: wrap;
+            margin: 1rem 0;
+        }
+    
+        .tech-item {
+            background: var(--light);
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            border: 1px solid #515151;
+            transition: background 0.3s ease, border-color 0.3s ease;
+        }
+    
+        .project-card.wordpress {
+            border: 2px solid #21759b;
+        }
+    
+        .project-card.wordpress .project-badge {
+            background: #21759b;
+        }
+    
+        .skills-cloud {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            justify-content: center;
+            max-width: 800px;
+            margin: 3rem auto;
+        }
+    
+        .skill-pill {
+            background: var(--gradient-2);
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border-radius: 30px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            transition: all 0.3s ease;
+        }
+    
+        .skill-pill:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(59, 130, 246, 0.3);
+        }
+    
+        .switches-container {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            margin-top: 2rem;
+        }
+    
+        .switch-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+    
+        .switch {
+            position: relative;
+            display: inline-block;
+            width: 60px;
+            height: 34px;
+        }
+    
+        .switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+    
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            transition: 0.4s;
+            border-radius: 34px;
+        }
+    
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 26px;
+            width: 26px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            transition: 0.4s;
+            border-radius: 50%;
+        }
+    
+        input:checked + .slider {
+            background-color:chartreuse;
+        }
+    
+        input:checked + .slider:before {
+            transform: translateX(26px);
+        }
+
+        
+    
+        @media (max-width: 768px) {
+            .hero {
+                padding: 4rem 1rem 3rem;
+            }
+            
+            .section-title {
+                font-size: 2.2rem;
+            }
+            
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+    
+</head>
+<body>
+    <header class="hero">
+        <img src="https://c.superprof.com/i/m/34688776/300/20250127151021/34688776.jpg" alt="Carlos Cortes" class="profile-img">
+        <h1>Carlos Cortes Sanchez</h1>
+        <h2>Desarrollador Full Stack</h2>
+        <p class="tagline">Arquitecto de soluciones digitales escalables</p>
+        <div class="switches-container">
+            <div class="switch-wrapper">
+                <label class="switch">
+                    <input type="checkbox" id="dark-mode-toggle">
+                    <span class="slider"></span>
+                </label>
+                <span>Modo Oscuro</span>
+            </div>
+            <div class="switch-wrapper">
+                <label class="switch">
+                    <input type="checkbox" id="language-toggle">
+                    <span class="slider"></span>
+                </label>
+                <span>English</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Sobre Mí -->
+    <section id="about" class="about">
+        <div class="container">
+            <h2>Sobre Mí</h2>
+            <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+                Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+            </p>
+            <p>
+                Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
+                Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+            </p>
+        </div>
+    </section>
+
+    <section id="skills">
+        <h2 class="section-title">Habilidades técnicas</h2>
+        <div class="skills-container">
+            <div class="skill-item">
+                <i class="fas fa-code skill-icon"></i>
+                <h3>Frontend</h3>
+                <p>Vue.js, HTML5, CSS3, JavaScript</p>
+            </div>
+            <div class="skill-item">
+                <i class="fas fa-server skill-icon"></i>
+                <h3>Backend</h3>
+                <p>Node.js, Python, PostgreSQL, FastAPI</p>
+            </div>
+            <div class="skill-item">
+                <i class="fas fa-tools skill-icon"></i>
+                <h3>DevOps</h3>
+                <p>AWS, CI/CD, GitHub Actions</p>
+            </div>
+            <div class="skill-item">
+                <i class="fas fa-tools skill-icon"></i>
+                <h3>No-Code Front</h3>
+                <p>Wordpress / Elementor, Shopify, </p>
+            </div>
+            <div class="skill-item">
+                <i class="fas fa-tools skill-icon"></i>
+                <h3>Marketing Skills</h3>
+                <p>SEO/SEM, Analitycs, </p>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects">
+        <h2 class="section-title">Portafolio</h2>
+        <div class="projects-grid">
+            <!-- Proyectos Full Stack -->
+            <div class="project-card">
+                <div class="project-badge">Full Stack</div>
+                <img src="https://via.placeholder.com/400x240" alt="API Platform" class="project-thumbnail">
+                <div class="project-content">
+                    <h3>Actyvalores (FinTech)</h3>
+                    <div class="tech-stack">
+                        <span class="tech-item">Vue.js</span>
+                        <span class="tech-item">PostgreSQL</span>
+                        <span class="tech-item">FastAPI</span>
+                        <span class="tech-item">AWS</span>
+                        <span class="tech-item">Node</span>
+                    </div>
+                    <p>Plataforma de inversión banca P2P, gestión, monitoreo, informacion y graficos.</p>
+                    <div style="margin-top: 1rem;">
+                        <button class="tech-item">
+                            <i class="fab fa-github project-icon"></i>
+                            <span class="icon-text"> GitHub </span>
+                        </button>
+                        <button class="tech-item">
+                            <i class="fas fa-external-link-alt project-icon"></i> 
+                            <span class="icon-text">Demo</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-badge">Full Stack</div>
+                <img src="https://via.placeholder.com/400x240" alt="E-learning" class="project-thumbnail">
+                <div class="project-content">
+                    <h3>My Budget (Monitoreo de gastos)</h3>
+                    <div class="tech-stack">
+                        <span class="tech-item">Vue.js</span>
+                        <span class="tech-item">PostgreSQL</span>
+                        <span class="tech-item">FastAPI</span>
+                        <span class="tech-item">OpenAi</span>
+                        <span class="tech-item">Node</span>
+                    </div>
+                    <p>Aplicación para gestion de ingresos y egresos personales, sugerencias por medio de AI.</p>
+                    <div style="margin-top: 1rem;">
+                        <button class="tech-item">
+                            <i class="fab fa-github project-icon"></i>
+                            <span class="icon-text"> GitHub </span>
+                        </button>
+                        <button class="tech-item">
+                            <i class="fas fa-external-link-alt project-icon"></i> 
+                            <span class="icon-text">Demo</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-badge">Full Stack</div>
+                <img src="https://via.placeholder.com/400x240" alt="E-learning" class="project-thumbnail">
+                <div class="project-content">
+                    <h3>Plataforma Habitos</h3>
+                    <div class="tech-stack">
+                        <span class="tech-item">React</span>
+                        <span class="tech-item">Redux</span>
+                        <span class="tech-item">PostgreSQL</span>
+                    </div>
+                    <p>Sistema para monitoreo y generación de nuevos hábitos.</p>
+                    <div style="margin-top: 1rem;">
+                        <button class="tech-item">
+                            <i class="fab fa-github project-icon"></i>
+                            <span class="icon-text"> GitHub </span>
+                        </button>
+                        <button class="tech-item">
+                            <i class="fas fa-external-link-alt project-icon"></i> 
+                            <span class="icon-text">Demo</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Proyectos WordPress -->
+            <div class="project-card wordpress">
+                <div class="project-badge">WordPresss</div>
+                <img src="https://via.placeholder.com/400x240" alt="E-commerce" class="project-thumbnail">
+                <div class="project-content">
+                    <h3>Pagina Comercial Actyvalores</h3>
+                    <div class="tech-stack">
+                        <span class="tech-item">Elementor Pro</span>
+                        <span class="tech-item">Optimización Velocidad</span>
+                        <span class="tech-item">SEO</span>
+                    </div>
+                    <p>Pagina informativa sobre la propuesta comercial de Activos y Valores, codigo insertado para calculadora de creditos / inversión.</p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Otras secciones mejoradas -->
+    <section id="skills">
+        <h2 class="section-title">Expertise</h2>
+        <div class="skills-cloud">
+            <div class="skill-pill">
+                <i class="fab fa-react"></i>
+                React Ecosystem
+            </div>
+            <div class="skill-pill">
+                <i class="fas fa-cloud"></i>
+                Cloud Architecture
+            </div>
+            <div class="skill-pill">
+                <i class="fas fa-bolt"></i>
+                Performance Optimization
+            </div>
+            <!-- Más habilidades -->
+        </div>
+    </section>
+
+    <script>
+        const darkModeToggle = document.getElementById('dark-mode-toggle');
+        const body = document.body;
+
+        // Función para activar/desactivar modo oscuro
+        function toggleDarkMode(isDark) {
+            if (isDark) {
+                body.classList.add('dark-mode');
+                localStorage.setItem('theme', 'dark');
+            } else {
+                body.classList.remove('dark-mode');
+                localStorage.setItem('theme', 'light');
+            }
+        }
+
+        // Event listener para el switch
+        darkModeToggle.addEventListener('change', (e) => {
+            toggleDarkMode(e.target.checked);
+        });
+
+        // Cargar preferencia al iniciar
+        const currentTheme = localStorage.getItem('theme');
+        if (currentTheme === 'dark' || (currentTheme === null && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            darkModeToggle.checked = true;
+            toggleDarkMode(true);
+        }    
+    </script>
+</body>
+</html>
