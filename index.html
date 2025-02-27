@@ -129,6 +129,8 @@
     
         .project-card {
             background: var(--light);
+            border-style: solid;
+            border-color: rgb(184, 183, 183);
             border-radius: 16px;
             overflow: hidden;
             box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1);
@@ -145,6 +147,10 @@
             box-shadow: 0 25px 50px -12px rgba(0,0,0,0.15);
         }
         
+        .dark-mode .project-card:hover {
+            box-shadow: 0 25px 50px -12px rgba(237, 237, 237, 0.15);
+        }
+
         .project-badge {
             position: absolute;
             top: 1rem;
@@ -305,8 +311,39 @@
             transform: translateX(26px);
         }
 
-        
-    
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background-color: #25D366;
+            color: white;
+            width: 60px; /* Ancho fijo */
+            height: 60px; /* Alto fijo */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            animation: pulse 2s infinite;
+            text-decoration: none; /* Elimina la línea debajo del enlace */
+        }
+
+        .whatsapp-float .fab {
+            font-size: 30px; /* Tamaño del ícono proporcional al contenedor */
+            line-height: 1; /* Elimina el espacio adicional debajo del ícono */
+        }
+
+        img{
+            max-width: 400px;
+            max-height: 200px;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.3); }
+            100% { transform: scale(1); }
+        }
+
         @media (max-width: 768px) {
             .hero {
                 padding: 4rem 1rem 3rem;
@@ -318,6 +355,13 @@
             
             .projects-grid {
                 grid-template-columns: 1fr;
+            }
+
+            .whatsapp-float {
+                bottom: 20px; /* Más cerca del borde */
+                right: 20px;
+                padding: 12px; /* Botón más compacto */
+                font-size: 1.2rem;
             }
         }
     </style>
@@ -399,7 +443,7 @@
             <!-- Proyectos Full Stack -->
             <div class="project-card">
                 <div class="project-badge">Full Stack</div>
-                <img src="https://via.placeholder.com/400x240" alt="API Platform" class="project-thumbnail">
+                <img src="https://www.actyvalores.com/wp-content/uploads/2025/02/Screenshot-2025-02-27-at-7.19.07-PM.png" alt="API Platform" class="project-thumbnail">
                 <div class="project-content">
                     <h3>Actyvalores (FinTech)</h3>
                     <div class="tech-stack">
@@ -411,21 +455,19 @@
                     </div>
                     <p>Plataforma de inversión banca P2P, gestión, monitoreo, informacion y graficos.</p>
                     <div style="margin-top: 1rem;">
-                        <button class="tech-item">
-                            <i class="fab fa-github project-icon"></i>
-                            <span class="icon-text"> GitHub </span>
-                        </button>
-                        <button class="tech-item">
-                            <i class="fas fa-external-link-alt project-icon"></i> 
-                            <span class="icon-text">Demo</span>
-                        </button>
+                        <a href="https://actyvalfront.onrender.com" target="blank">
+                            <button class="tech-item">
+                                <i class="fas fa-external-link-alt project-icon"></i> 
+                                <span class="icon-text">Demo</span>
+                            </button>
+                        </a>
                     </div>
                 </div>
             </div>
 
             <div class="project-card">
                 <div class="project-badge">Full Stack</div>
-                <img src="https://via.placeholder.com/400x240" alt="E-learning" class="project-thumbnail">
+                <img src="https://www.actyvalores.com/wp-content/uploads/2025/02/Screenshot-2025-02-27-at-7.12.15-PM.png" alt="E-learning" class="project-thumbnail">
                 <div class="project-content">
                     <h3>My Budget (Monitoreo de gastos)</h3>
                     <div class="tech-stack">
@@ -437,38 +479,32 @@
                     </div>
                     <p>Aplicación para gestion de ingresos y egresos personales, sugerencias por medio de AI.</p>
                     <div style="margin-top: 1rem;">
-                        <button class="tech-item">
-                            <i class="fab fa-github project-icon"></i>
-                            <span class="icon-text"> GitHub </span>
-                        </button>
-                        <button class="tech-item">
-                            <i class="fas fa-external-link-alt project-icon"></i> 
-                            <span class="icon-text">Demo</span>
-                        </button>
+                        <a href="https://front-24qp.onrender.com" target="_blank">
+                            <button class="tech-item">
+                                <i class="fas fa-external-link-alt project-icon"></i> 
+                                <span class="icon-text">Demo</span> 
+                            </button>
+                        </a>
                     </div>
                 </div>
             </div>
 
             <div class="project-card">
                 <div class="project-badge">Full Stack</div>
-                <img src="https://via.placeholder.com/400x240" alt="E-learning" class="project-thumbnail">
+                <img src="https://t3.ftcdn.net/jpg/03/53/83/92/360_F_353839266_8yqhN0548cGxrl4VOxngsiJzDgrDHxjG.jpg" alt="E-learning" class="project-thumbnail">
                 <div class="project-content">
-                    <h3>Plataforma Habitos</h3>
+                    <h3>Social Score</h3>
                     <div class="tech-stack">
                         <span class="tech-item">React</span>
-                        <span class="tech-item">Redux</span>
+                        <span class="tech-item">Next.js</span>
                         <span class="tech-item">PostgreSQL</span>
                     </div>
-                    <p>Sistema para monitoreo y generación de nuevos hábitos.</p>
+                    <p>Sistema para revision de reputacion de empresas.</p>
                     <div style="margin-top: 1rem;">
-                        <button class="tech-item">
-                            <i class="fab fa-github project-icon"></i>
-                            <span class="icon-text"> GitHub </span>
-                        </button>
-                        <button class="tech-item">
-                            <i class="fas fa-external-link-alt project-icon"></i> 
-                            <span class="icon-text">Demo</span>
-                        </button>
+                            <button class="tech-item">
+                                <i class="fab fa-github project-icon"></i>
+                                <span class="icon-text"> En desarrollo </span>
+                            </button>                        
                     </div>
                 </div>
             </div>
@@ -476,7 +512,7 @@
             <!-- Proyectos WordPress -->
             <div class="project-card wordpress">
                 <div class="project-badge">WordPresss</div>
-                <img src="https://via.placeholder.com/400x240" alt="E-commerce" class="project-thumbnail">
+                <img src="https://www.actyvalores.com/wp-content/uploads/2025/02/Screenshot-2025-02-27-at-7.48.23-PM.png" alt="actyvalores.com" class="project-thumbnail">
                 <div class="project-content">
                     <h3>Pagina Comercial Actyvalores</h3>
                     <div class="tech-stack">
@@ -485,13 +521,21 @@
                         <span class="tech-item">SEO</span>
                     </div>
                     <p>Pagina informativa sobre la propuesta comercial de Activos y Valores, codigo insertado para calculadora de creditos / inversión.</p>
+                    <div style="margin-top: 1rem;">
+                        <a href="https://www.actyvalores.com" target="_blank">
+                            <button class="tech-item">
+                                <i class="fas fa-external-link-alt project-icon"></i> 
+                                <span class="icon-text">Ver Pagina</span>
+                            </button>
+                        </a>
+                    </div>
                 </div>
             </div>
 
         </div>
     </section>
 
-    <!-- Otras secciones mejoradas -->
+    <!-- Skills -->
     <section id="skills">
         <h2 class="section-title">Expertise</h2>
         <div class="skills-cloud">
@@ -507,9 +551,13 @@
                 <i class="fas fa-bolt"></i>
                 Performance Optimization
             </div>
-            <!-- Más habilidades -->
         </div>
     </section>
+
+    <!-- Botón Flotante de WhatsApp -->
+    <a href="https://wa.me/34637036828" class="whatsapp-float" target="_blank">
+        <i class="fab fa-whatsapp wap"></i>
+    </a>
 
     <script>
         const darkModeToggle = document.getElementById('dark-mode-toggle');
