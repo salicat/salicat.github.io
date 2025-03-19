@@ -8,7 +8,6 @@ import ProfessionalProfileView from "./ProfessionalProfileView.vue";
 
 import { ref, nextTick } from "vue";
 
-
 const cvContent = ref<HTMLElement | null>(null);
 
 async function openPrintView() {
@@ -72,8 +71,8 @@ async function openPrintView() {
 <template>
   <div class="cv-wrapper">
     <header class="cv-header">
-      <h1>Curriculum Vitae</h1>
-      <button class="download-btn" @click="openPrintView">Abrir en nueva ventana</button>
+      <h1>Curriculum Vitae (Laboral)</h1>
+      <button class="download-btn" @click="openPrintView">Exportar Curriculum</button>
     </header>
     <div class="cv" ref="cvContent">
       <div class="left-column">
