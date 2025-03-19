@@ -34,7 +34,7 @@ async function openPrintView() {
       <head>
         <title>Curriculum Vitae</title>
         <style>
-          body { font-family: Arial, sans-serif; margin: 20px; padding: 0; }
+          body { font-family: Arial, sans-serif; margin: 20px; padding-right: 20%; padding-left: 20%; }
           .cv {
             display: grid;
             grid-template-columns: 1fr 2fr;
