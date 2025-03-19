@@ -3,10 +3,10 @@ import { ref } from 'vue';
 import { RouterLink, RouterView } from 'vue-router';
 import HelloWorld from './components/HelloWorld.vue';
 
-const isSidebarVisible = ref(true); // Estado para controlar la visibilidad del sidebar
+const isSidebarVisible = ref(true); 
 
 const toggleSidebar = () => {
-  isSidebarVisible.value = !isSidebarVisible.value; // Cambiar el estado de visibilidad
+  isSidebarVisible.value = !isSidebarVisible.value; 
 };
 </script>
 
@@ -22,7 +22,6 @@ const toggleSidebar = () => {
       </button>
 
       <nav :class="{ hidden: !isSidebarVisible }">
-        <RouterLink to="/">Home</RouterLink>
         <RouterLink to="/skills">Skills</RouterLink>
         <RouterLink to="/experience">Job Experience</RouterLink>
         <RouterLink to="/projects">Proyectos</RouterLink>
