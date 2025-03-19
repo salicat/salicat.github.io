@@ -1,87 +1,196 @@
-.profile-img {
-	width: 220px;
-	height: 220px;
-	border-radius: 50%;
-	border: 4px solid white;
-	box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-	margin: 1rem auto;
-	transition: transform 0.3s ease;
-}
-
-.profile-img:hover {
-	transform: scale(1.05);
-}
-
-.skills-container {
-	display: grid;
-	grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-	gap: 2rem;
-	max-width: 1200px;
-	margin: 2rem auto;
-}
-
-.skill-item {
-	background: rgba(255, 255, 255, 0.1);
+header {
+	display: flex;
+	flex-direction: row; /* Cambiado a fila para que el sidebar y el contenido se alineen horizontalmente */
+	height: 100vh;
+	color: white; /* Color de texto */
+  }
+  
+  nav {
+	width: 250px; /* Ancho del sidebar */
+	font-size: 14px;
+	text-align: left;
+	padding-left: 1rem;
+	transition: transform 0.3s ease-in-out;
+  }
+  
+  nav.hidden {
+	transform: translateX(-100%); /* Ocultar el sidebar */
+  }
+  
+  nav a {
+	display: block;
+	padding: 1rem;
+	border-bottom: 1px solid var(--color-border);
+	text-decoration: none;
+	color: white;
+	transition: background-color 0.3s ease;
+  }
+  
+  nav a:hover {
+	background-color: #34495e; /* Color de fondo al pasar el ratón */
+  }
+  
+  nav a.router-link-exact-active {
+	background-color: #16a085; /* Color de fondo activo */
+	color: white;
+  }
+  
+  nav a.router-link-exact-active:hover {
+	background-color: #1abc9c; /* Color de fondo activo al pasar el ratón */
+  }
+  
+  nav a:first-of-type {
+	border-top: 1px solid var(--color-border); /* Borde superior para el primer enlace */
+  }
+  
+  /* Estilo para el contenido del RouterView */
+  .router-content {
+	flex-grow: 1;
 	padding: 2rem;
-	border-radius: 1rem;
-	backdrop-filter: blur(10px);
-	transition: transform 0.3s ease;
-}
-
-.skill-item:hover {
-	transform: translateY(-5px);
-}
-
-
-.skill-icon {
-	font-size: 2.5rem;
-	color: var(--accent);
-	margin-bottom: 1rem;
-}
-
-section {
-	padding: 5rem 2rem;
-	max-width: 1200px;
-	margin: 0 auto;
-}
-
-.section-title {
-	font-size: 2.8rem;
-	text-align: center;
-	margin-bottom: 4rem;
-	position: relative;
-	color: var(--dark);
-	transition: color 0.3s ease;
-}
-
-.section-title:after {
-	content: '';
-	width: 60px;
-	height: 4px;
-	background: var(--accent);
+	transition: margin-left 0.3s ease-in-out;
+  }
+  
+  .router-content.expanded {
+	margin-left: 250px; /* Dejar espacio para el sidebar cuando está visible */
+  }
+  
+  .sidebar-toggle-btn {
 	position: absolute;
-	bottom: -15px;
-	left: 50%;
-	transform: translateX(-50%);
-	border-radius: 2px;
-}
+	top: 20px;
+	left: 20px;
+	background-color: #16a085;
+	color: white;
+	border: none;
+	padding: 0.5rem 1rem;
+	cursor: pointer;
+	font-size: 1rem;
+	border-radius: 5px;
+  }
+  
+  .sidebar-toggle-btn:hover {
+	background-color: #1abc9c;
+  }
+  
+  /* Media queries para dispositivos de escritorio */
+  @media (min-width: 1024px) {
+	nav {
+		width: 200px; /* Menor tamaño en pantallas pequeñas */
+	}
+
+	.router-content.expanded {
+		margin-left: 0;
+	}
+  }
+  
+
 .projects-grid {
 	display: grid;
-	grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-	gap: 2.5rem;
+	grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)) !important; 
+	gap: 2rem;
 	margin-top: 3rem;
-}
-
-.project-card {
-	background: var(--light);
-	border-style: solid;
-	border-color: rgb(184, 183, 183);
-	border-radius: 16px;
-	overflow: hidden;
-	box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1);
-	transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease, color 0.3s ease;
+	padding: 0 1rem; 
+  }
+  
+  .project-card { 
+	border: 1px solid #e1e1e1; 
+	border-radius: 12px; 
+	overflow: hidden; 
+	box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1); 
+	transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease; /* Efectos de transición */
 	position: relative;
-}
+	padding: 20px;
+	display: flex;
+	flex-direction: column;
+  }
+  
+  .project-card:hover {
+	transform: translateY(-5px); /* Eleva la tarjeta al pasar el ratón */
+	box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1); /* Aumenta la sombra */
+  }
+  
+  .project-badge {
+	background: #007bff; /* Color de fondo para la etiqueta */
+	color: white;
+	padding: 8px 12px;
+	font-size: 0.9rem;
+	font-weight: 600;
+	border-radius: 20px;
+	position: absolute;
+	top: 16px;
+	left: 16px;
+  }
+  
+  .project-thumbnail {
+	width: 100%;
+	height: 180px; /* Ajusta la altura de las imágenes */
+	object-fit: cover; /* Hace que la imagen cubra el área */
+	border-radius: 10px;
+  }
+  
+  .project-content {
+	margin-top: 16px;
+	flex-grow: 1; /* Asegura que el contenido ocupe el espacio disponible */
+  }
+  
+  .project-content h3 {
+	font-size: 1.3rem;
+	font-weight: 600;
+	margin-bottom: 1rem;
+  }
+  
+  .tech-stack {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 8px;
+	margin-bottom: 1rem;
+  }
+  
+  .tech-item {
+	background-color: #f1f1f1;
+	padding: 6px 12px;
+	border-radius: 20px;
+	font-size: 0.9rem;
+	color: #555;
+	transition: background-color 0.3s ease;
+  }
+  
+  .tech-item:hover {
+	background-color: #007bff;
+	color: white;
+  }
+  
+  .project-content p {
+	font-size: 0.95rem;
+	color: #555;
+	margin-bottom: 1rem;
+  }
+  
+  .project-icon {
+	margin-right: 8px;
+  }
+  
+  .icon-text {
+	font-size: 0.9rem;
+  }
+  
+  .project-card a button {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	background-color: #007bff;
+	color: white;
+	padding: 10px 16px;
+	border-radius: 8px;
+	border: none;
+	cursor: pointer;
+	font-size: 1rem;
+	transition: background-color 0.3s ease;
+  }
+  
+  .project-card a button:hover {
+	background-color: #0056b3; /* Cambia el color al pasar el ratón */
+  }
+  
 
 .personal-info {
     text-align: center;
