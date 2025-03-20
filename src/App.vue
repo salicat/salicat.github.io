@@ -3,36 +3,34 @@ import { ref } from 'vue';
 import { RouterLink, RouterView } from 'vue-router';
 import HelloWorld from './components/HelloWorld.vue';
 
-const isSidebarVisible = ref(true); 
+const isSidebarVisible = ref(true);
 
 const toggleSidebar = () => {
-  isSidebarVisible.value = !isSidebarVisible.value; 
+  isSidebarVisible.value = !isSidebarVisible.value;
 };
 </script>
 
-<template> 
-	<header>
-		<div class="wrapper">
-		<HelloWorld msg="Carlos Cortes Sanchez" />
-		<br>
-		<!-- Botón para mostrar/ocultar el sidebar -->
-		<button @click="toggleSidebar" class="sidebar-toggle-btn">
-			<span v-if="isSidebarVisible">Cerrar</span>
-			<span v-else>Mostrar</span>
-		</button>
+<template>
+  <div class="app-container">
+    <!-- Sidebar -->
+    <nav :class="{ 'sidebar-hidden': !isSidebarVisible }">
+      <div class="sidebar-content">
+        <HelloWorld msg="Carlos Cortes Sanchez" />
+        <RouterLink to="/skills">Skills</RouterLink>
+        <RouterLink to="/experience">Job Experience</RouterLink>
+        <RouterLink to="/projects">Proyectos</RouterLink>
+        <RouterLink to="/cv">C.V.</RouterLink>
+      </div>
+    </nav>
 
-		<nav :class="{ hidden: !isSidebarVisible }">
-			<RouterLink to="/skills">Skills</RouterLink>
-			<RouterLink to="/experience">Job Experience</RouterLink>
-			<RouterLink to="/projects">Proyectos</RouterLink>
-			<RouterLink to="/cv">C.V.</RouterLink>
-		</nav>
-		</div>
-	</header>
-
-	<div :class="{ 'router-content': true, 'expanded': isSidebarVisible }">
-		<RouterView />
-	</div>
+    <!-- Main Content -->
+    <main :class="{ 'content-expanded': !isSidebarVisible }">
+      <button @click="toggleSidebar" class="sidebar-toggle-btn">
+        {{ isSidebarVisible ? '◀ Ocultar' : 'Mostrar ▶' }}
+      </button>
+      <div class="router-content">
+        <RouterView />
+      </div>
+    </main>
+  </div>
 </template>
-
-
