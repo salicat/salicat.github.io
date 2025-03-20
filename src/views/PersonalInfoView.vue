@@ -8,10 +8,10 @@
       <hr class="divider" />
       <div class="contact-info">
         <ul>
-            <li><i class="fas fa-map-marker-alt"></i> Amorebieta, Vizcaya</li>
-          <li><i class="fas fa-envelope"></i> 2020carloscortes@gmail.com</li>
-          <li><i class="fas fa-phone"></i> +34 637 036 828</li>
-          <li><i class="fas fa-globe"></i> salicat.github.io</li>
+            <li><font-awesome-icon :icon="['fas', 'map-marker-alt']" /> Amorebieta, Vizcaya</li>
+          <li><font-awesome-icon :icon="['fas', 'envelope']" /> 2020carloscortes@gmail.com</li>
+          <li><font-awesome-icon :icon="['fas', 'phone']" /> +34 637 036 828</li>
+          <li><font-awesome-icon :icon="['fab', 'github']" /> salicat.github.io</li>
         </ul>
       </div>
     </div>

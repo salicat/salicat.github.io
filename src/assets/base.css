@@ -100,6 +100,16 @@ main {
   transition: margin-left 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+.router-content {
+    width: 1200px; /* Ancho fijo */
+    min-height: 100vh;
+    margin: 0 auto;
+    padding: 40px 20px;
+    position: relative;
+    background: var(--color-background);
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.1);
+  }
+
 /* Toggle button */
 .sidebar-toggle-btn {
   position: fixed;
@@ -143,10 +153,18 @@ nav a.router-link-exact-active:hover {
 }
 
 /* Responsive adjustments */
+@media (max-width: 1260px) {
+    .router-content {
+      width: 100%;
+      max-width: 1200px;
+      padding: 40px 15px;
+    }
+  }
 @media (min-width: 1024px) {
   nav {
     width: 200px;
   }
+
 } 
 @media (max-width: 768px) {
   nav {
@@ -168,120 +186,93 @@ nav a.router-link-exact-active:hover {
   }
 }
 
-/* Content container */
-.router-content {
-    width: 1200px;
-    margin: 0 auto;
-    width: 100%;
-    padding: 20px;
-}
+
+
 /* ===================================================
    Grid de Proyectos y Tarjetas
 =================================================== */
 .projects-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)) !important;
-  gap: 2rem;
-  margin-top: 3rem;
-  padding: 0 1rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2.5rem;
+    margin-top: 3rem;
 }
 
-.project-card { 
-  border: 1px solid #b8b7b7;
-  border-radius: 16px;
-  overflow: hidden;
-  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease, color 0.3s ease;
-  position: relative;
-  padding: 20px;
-  display: flex;
-  flex-direction: column;
+.project-card {
+    background: var(--light);
+    border-style: solid;
+    border-color: rgb(184, 183, 183);
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease, color 0.3s ease;
+    position: relative;
+}
+
+.dark-mode .project-card {
+    box-shadow: 0 10px 15px -3px rgba(111, 255, 147, 0.178);
 }
 
 .project-card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
+    transform: translateY(-8px);
+    box-shadow: 0 25px 50px -12px rgba(0,0,0,0.15);
+}
+
+.dark-mode .project-card:hover {
+    box-shadow: 0 25px 50px -12px rgba(237, 237, 237, 0.15);
 }
 
 .project-badge {
-  position: absolute;
-  top: 1rem;
-  right: 1rem;
-  background-color: rgb(80, 157, 3);
-  color: white;
-  padding: 0.4rem 1rem;
-  border-radius: 20px;
-  font-size: 0.9rem;
-  font-weight: 600;
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background-color: rgb(80, 157, 3);
+    color: white;
+    padding: 0.4rem 1rem;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 600;
 }
 
 .project-thumbnail {
-  width: 100%;
-  height: 240px;
-  object-fit: cover;
-  border-bottom: 4px solid #16a085;
-}
-
-.project-content {
-  padding: 1.5rem;
-}
-
-.project-content h3 {
-  font-size: 1.3rem;
-  font-weight: 600;
-  margin-bottom: 1rem;
-}
-
-.tech-stack {
-  display: flex;
-  gap: 0.8rem;
-  flex-wrap: wrap;
-  margin: 1rem 0;
-}
-
-.tech-item {
-  background: var(--vt-c-white-soft);
-  padding: 0.4rem 1rem;
-  border-radius: 20px;
-  font-size: 0.9rem;
-  border: 1px solid #515151;
-  transition: background 0.3s ease, border-color 0.3s ease;
-}
-
-.tech-item:hover {
-  background-color: #007bff;
-  color: white;
+    width: 100%;
+    height: 240px;
+    object-fit: cover;
+    border-bottom: 4px solid var(--accent);
 }
 
 .project-icon {
-  font-size: 1.5rem;
-  color: var(--vt-c-black);
-  transition: color 0.3s ease;
+    font-size: 1.5rem;
+    color: var(--dark);
+    transition: color 0.3s ease;
+}
+
+.dark-mode .project-icon {
+    color: var(--light);
+}
+
+.dark-mode .fa-github {
+    color: white;
+    filter: brightness(1.5);
+}
+
+.dark-mode .fa-external-link-alt{
+    color: white !important;
+    filter: brightness(1.5);
 }
 
 .icon-text {
-  color: var(--vt-c-black);
-  transition: color 0.3s ease;
+    color: var(--dark); /* Color en modo claro */
+    transition: color 0.3s ease;
 }
 
-.project-card a button {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  background-color: #007bff;
-  color: white;
-  padding: 10px 16px;
-  border-radius: 8px;
-  border: none;
-  cursor: pointer;
-  font-size: 1rem;
-  transition: background-color 0.3s ease;
+.dark-mode .icon-text {
+    color: white; /* Color en modo oscuro */
 }
 
-.project-card a button:hover {
-  background-color: #0056b3;
+.project-content {
+    padding: 1.5rem;
 }
-
 /* ===================================================
    Grid de Habilidades
 =================================================== */
@@ -456,6 +447,10 @@ section {
   margin: 5px 0;
 }
 
+h3{
+  font-weight: 600;
+  color: white;
+}
 /* ===================================================
    Enlaces y Botones
 =================================================== */

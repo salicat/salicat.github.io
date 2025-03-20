@@ -24,9 +24,9 @@ const toggleSidebar = () => {
     </nav>
 
     <!-- Main Content -->
-    <main :class="{ 'content-expanded': !isSidebarVisible }">
+    <main >
       <button @click="toggleSidebar" class="sidebar-toggle-btn">
-        {{ isSidebarVisible ? '◀ Ocultar' : 'Mostrar ▶' }}
+        {{ isSidebarVisible ? '◀ Ocultar' : 'Menú ' }}
       </button>
       <div class="router-content">
         <RouterView />
