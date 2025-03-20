@@ -3,7 +3,8 @@
       <div class="cv_seccion">
         <h2>Perfil Profesional</h2>
       </div>
-      <p>
+      <div class="jobs">
+        <p>
         Profesional con amplia experiencia en gestión comercial, desarrollo de negocios y soluciones digitales.  
         Con más de 22 años en el ámbito comercial, 7 años en e-commerce y marketing digital, y 13 años en entornos industriales y técnicos,  
         me destaco por mi capacidad para adaptar estrategias a distintos sectores, combinando conocimientos en ventas, tecnología y optimización de procesos.  
@@ -16,7 +17,9 @@
         Me considero una persona con gran capacidad de aprendizaje, autonomía y resolución de problemas.  
         Disfruto enfrentar nuevos retos y optimizar procesos mediante soluciones innovadoras en el ámbito comercial y digital.  
       </p>
-    </div>
+
+      </div>
+        </div>
   </template>
   
   <script setup lang="ts">

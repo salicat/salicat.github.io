@@ -19,7 +19,7 @@
 					<div style="margin-top: 1rem;">
 						<a href="https://actyvalfront.onrender.com" target="blank">
 							<button class="tech-item">
-								<i class="fas fa-external-link-alt project-icon"></i> 
+								<font-awesome-icon :icon="['fas', 'arrow-up-right-from-square']" />
 								<span class="icon-text">Demo</span>
 							</button>
 						</a>

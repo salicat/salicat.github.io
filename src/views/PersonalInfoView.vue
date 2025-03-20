@@ -1,11 +1,11 @@
 <template>
     <div class="personal-info">
       <div class="name">
-        <h1>Carlos</h1>
-        <h1>Cortes</h1>
-        <h1>Sanchez</h1>
+        <h1 >CARLOS</h1>
+        <h1 >CORTES</h1>
       </div>
       <hr class="divider" />
+	  <br>
       <div class="contact-info">
         <ul>
             <li><font-awesome-icon :icon="['fas', 'map-marker-alt']" /> Amorebieta, Vizcaya</li>
@@ -15,9 +15,4 @@
         </ul>
       </div>
     </div>
-  </template>
-  
-  <script setup lang="ts">
-  // Puedes agregar props si deseas hacer este componente reutilizable
-  </script>
-  
+</template>

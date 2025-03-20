@@ -16,7 +16,7 @@ import {
     faBullhorn,
     faPalette
   } from '@fortawesome/free-solid-svg-icons'
-  import { faGithub } from '@fortawesome/free-brands-svg-icons'
+import { faGithub } from '@fortawesome/free-brands-svg-icons'
 import App from './App.vue'
 import router from './router'
 

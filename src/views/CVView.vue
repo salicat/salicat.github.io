@@ -54,7 +54,29 @@ async function openPrintView() {
             font-size: 16px;
             cursor: pointer;
             border-radius: 5px;
+          }/* Estilos específicos para iconos */
+          .svg-inline--fa {
+            width: 15px !important;
+            height: 15px !important;
+            vertical-align: middle;
           }
+          
+          @media print {
+            body { 
+              padding: 0 !important;
+              margin: 10px !important;
+            }
+            
+            .cv {
+              transform: scale(0.95);
+              transform-origin: top center;
+            }
+            
+            .fa-icon {
+              font-size: 10px !important;
+            }
+          }
+
           .print-btn:hover { background-color: #005582; }
         </style>
       </head>
@@ -77,12 +99,16 @@ async function openPrintView() {
     <div class="cv" ref="cvContent">
       <div class="left-column">
         <PersonalInfoView />
+        <br>
         <KeySkillsView />
+        <br>
         <LanguagesView />
       </div>
       <div class="right-column">
         <ProfessionalProfileView />
+        <br>
         <WorkExperienceView />
+        <br>
         <EducationView />
       </div>
     </div>

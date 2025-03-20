@@ -1,5 +1,7 @@
 /* color palette from <https://github.com/vuejs/theme> */
 :root {
+  --base-font: 1rem;    /* 16px por defecto */
+  --scale-ratio: 1.25;  /* Proporción áurea */
   --vt-c-white: #ffffff;
   --vt-c-white-soft: #f8f8f8;
   --vt-c-white-mute: #f2f2f2;
@@ -26,7 +28,41 @@
   --color-text: var(--vt-c-text-light-1);
   --section-gap: 160px;
 }
+html {
+  font-size: 100%; /* 16px por defecto, pero respeta ajustes del usuario */
+}
 
+body {
+  font-size: 1rem; /* Hereda de html */
+}
+
+h1 {
+  font-size: calc(var(--base-font) * 2.488); /* ≈ 39.8px */
+  line-height: 1.2;
+}
+
+h2 {
+  font-size: calc(var(--base-font) * 2.074); /* ≈ 33.2px */
+  line-height: 1.3;
+}
+
+p {
+  font-size: var(--base-font); /* 16px */
+  line-height: 1.6;
+}
+@media (max-width: 768px) {
+  :root {
+    --base-font: 0.9rem;  /* 14.4px base */
+  }
+  
+  h1 {
+    font-size: calc(var(--base-font) * 2); /* 28.8px */
+  }
+  
+  h2 {
+    font-size: calc(var(--base-font) * 1.75); /* 25.2px */
+  }
+}
 @media (prefers-color-scheme: dark) {
   :root {
     --color-background: var(--vt-c-black);
@@ -50,7 +86,6 @@
 
 body {
   min-height: 100vh;
-  color: var(--color-text);
   background: var(--color-background);
   transition: color 0.5s, background-color 0.5s;
   line-height: 1.6;
@@ -334,6 +369,50 @@ section {
 /* ===================================================
    Estilos para el CV
 =================================================== */
+.cv-wrapper{
+  padding-left: 10%;
+  padding-right: 10%;
+}
+
+.cv_seccion{
+  padding-left: 3%;
+  width: 100%;
+  background-color: #0073b1;
+}
+
+.cv_seccion h2{
+  color: white !important;
+  font-weight: bold;
+  padding-top: 0.5%;
+}
+.name{
+  color: rgb(255, 255, 255);
+  text-align: center;
+  font-size: 4.4em;
+}
+
+.name h1{
+  line-height: 0.9em;
+  font-weight: bold;
+  font-size: 2em;
+}
+
+.divider{
+  height: 6px;
+  background-color: orange;
+}
+
+.contact-info{
+  padding-left: -10px;
+  font-size: 1.2em;
+  color: white;
+}
+ .contact-info li{
+  font-size: 1.2em;
+  font-weight: bold;
+  list-style-type: none;
+}
+
 .cv {
   display: grid;
   grid-template-columns: 1fr 2fr;
@@ -348,15 +427,30 @@ section {
   background-color: #3194b8;
 }
 
+.cv .left-column h3{
+  font-size: 1.8em;
+  font-weight: bold;
+}
+
+.cv .left-column li{
+  font-size: 1.5em;
+  color: white;
+  list-style-type: none;
+}
+
+
+
+
 .cv .right-column {
   padding: 20px;
-  font-size: 0.66em;
   background-color: white;
-  color: black;
 }
+
+
 
 .cv .left-column h2 {
   color: orange;
+  font-size: 3.2em;
   font-weight: bold;
 }
 
@@ -491,6 +585,28 @@ a:hover {
 img {
   max-width: 400px;
   max-height: 200px;
+}
+
+/* Tamaños estándar */
+.fa-icon {
+  font-size: 1.2rem;
+  margin-right: 0.5rem;
+  color: #2c3e50;
+}
+
+/* Tamaños específicos */
+.icon-lg {
+  font-size: 1.8rem;
+}
+
+.icon-brand {
+  color: #181818;
+}
+
+/* Animación hover */
+.fa-icon:hover {
+  opacity: 0.8;
+  transition: opacity 0.3s ease;
 }
 
 /* ===================================================
