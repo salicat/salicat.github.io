@@ -3,16 +3,22 @@
       <div class="cv_seccion">
         <h2>Educación</h2>
       </div>
-      
-      <div v-for="edu in education" :key="edu.title">
-        <h3>{{ edu.title }}</h3>
-        <p>{{ edu.institution }} - {{ edu.year }}</p>
+      <div class="edu">
+        <div >
+          <h3>Diplomado en Programación</h3>
+          <p>Universidad Nacional de Colombia </p>
+		  <p>Colombia 2020</p>
+		  <br>
+		  <h3>Ingeniería Mecánica</h3>
+          <p>Universidad Santo Tomás </p>
+		  <p>Colombia 2005</p>
+        </div>
+		<div>
+			<h3>Cursos</h3>
+			<p v-for="course in courses" :key="course">{{ course }}</p>
+		</div>
       </div>
-  
-      <h3>Cursos Adicionales</h3>
-      <ul>
-        <li v-for="course in courses" :key="course">{{ course }}</li>
-      </ul>
+
     </div>
   </template>
   

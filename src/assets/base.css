@@ -307,6 +307,7 @@ nav a.router-link-exact-active:hover {
 
 .project-content {
     padding: 1.5rem;
+    color: white;
 }
 /* ===================================================
    Grid de Habilidades
@@ -398,8 +399,17 @@ section {
 }
 
 .divider{
+  margin-top: 5%; 
+  border-color: orange;
   height: 6px;
   background-color: orange;
+}
+.contact-info svg{
+  color: orange;
+}
+
+.contact-info ul{
+  margin-left: -5%;
 }
 
 .contact-info{
@@ -438,15 +448,20 @@ section {
   list-style-type: none;
 }
 
-
-
-
 .cv .right-column {
   padding: 20px;
   background-color: white;
 }
 
+.edu{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
 
+.edu h3{
+  color: black !important;
+}
 
 .cv .left-column h2 {
   color: orange;

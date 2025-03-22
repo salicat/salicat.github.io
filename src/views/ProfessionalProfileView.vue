@@ -14,7 +14,7 @@
         y estrategias de marketing digital, logrando aumentar la eficiencia y rentabilidad de los negocios en los que he participado.  
       </p>
       <p>
-        Me considero una persona con gran capacidad de aprendizaje, autonomía y resolución de problemas.  
+        Soy una persona con gran capacidad de aprendizaje, autonomía y resolución de problemas.  
         Disfruto enfrentar nuevos retos y optimizar procesos mediante soluciones innovadoras en el ámbito comercial y digital.  
       </p>
 
