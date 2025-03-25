@@ -4,7 +4,7 @@
 			<h2>Experiencia Laboral</h2>
 		</div>
       <div v-for="job in jobs" :key="job.company" class="jobs">
-        <h3 style="color: black;">{{ job.company }}</h3>
+        <h3 style="color: black; font-weight: bold !important;">{{ job.company }}</h3>
         <p><strong>{{ job.position }}</strong> ({{ job.dates }})</p>
         <ul>
           <li v-for="task in job.tasks" :key="task">{{ task }}</li>

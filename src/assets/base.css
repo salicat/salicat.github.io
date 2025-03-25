@@ -353,8 +353,9 @@ nav a.router-link-exact-active:hover {
 }
 
 .skill_container:hover .skill-item {
+  color: rgb(1, 253, 1);
+  border: 1px solid rgb(1, 253, 1);
   box-shadow: 0 25px 50px -12px rgba(13, 246, 56, 0.15);
-  transition: all 0.6s ease; 
 }
 
 .flip-box {
@@ -408,7 +409,6 @@ nav a.router-link-exact-active:hover {
   margin: 0.8rem 0;
 }
 
-
 .skill-item p {
   font-size: 0.95rem;
   line-height: 1.5;
@@ -416,9 +416,8 @@ nav a.router-link-exact-active:hover {
   margin: 0 auto;
 }
 
-/* Estado flipped */
 .flipped {
-  transform: rotateY(180deg) scale(0.98); /* Pequeño scale para efecto suave */
+  transform: rotateY(180deg) scale(0.98); 
 }
 /* ===================================================
    5. Secciones y Títulos
@@ -453,22 +452,24 @@ section {
 =================================================== */
 .cv {
   display: grid;
-  grid-template-columns: 1fr 2fr; /* Siempre 2 columnas */
-  gap: 1rem;
+  grid-template-columns: 1fr 2fr; 
   max-width: 1000px;
   margin: 40px auto;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  overflow-x: auto; /* scroll horizontal si no cabe en móvil */
+  overflow-x: auto; 
 }
 
-/* Mantiene 2 columnas en móvil, forzando scroll horizontal */
+.link{
+  font-size: 2em;
+  color: rgb(2, 199, 74);
+}
+
 @media (max-width: 768px) {
   .cv {
     grid-template-columns: 1fr 1fr;
   }
 }
 
-/* Secciones internas del CV */
 .cv-wrapper {
   padding-left: 10%;
   padding-right: 10%;
@@ -530,7 +531,11 @@ section {
 }
 .cv .right-column {
   padding: 20px;
+  text-align: justify;
   background-color: white;
+}
+.jobs{
+  padding-right: 5%;
 }
 .edu {
   display: flex;
@@ -544,6 +549,10 @@ section {
   color: orange;
   font-size: 3.2em;
   font-weight: bold;
+}
+
+.key_skills h3{
+  color: white;
 }
 .cv h2 {
   font-size: 2em;
@@ -618,6 +627,7 @@ section {
 .cv-card p {
   margin: 5px 0;
 }
+
 
 /* ===================================================
    7. Enlaces, Botones, Extras

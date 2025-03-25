@@ -5,16 +5,16 @@
       </div>
       <div class="edu">
         <div >
-          <h3>Diplomado en Programación</h3>
+          <h3 style="color: black; font-weight: bold !important;">Diplomado en Programación</h3>
           <p>Universidad Nacional de Colombia </p>
 		  <p>Colombia 2020</p>
 		  <br>
-		  <h3>Ingeniería Mecánica</h3>
+		  <h3 style="color: black; font-weight: bold !important;">Ingeniería Mecánica</h3>
           <p>Universidad Santo Tomás </p>
 		  <p>Colombia 2005</p>
         </div>
 		<div>
-			<h3>Cursos</h3>
+			<h3 style="color: black; font-weight: bold !important;">Cursos</h3>
 			<p v-for="course in courses" :key="course">{{ course }}</p>
 		</div>
       </div>
