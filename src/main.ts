@@ -2,7 +2,6 @@ import './assets/main.css'
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import { library } from '@fortawesome/fontawesome-svg-core'
-import { faExternalLinkAlt } from '@fortawesome/free-solid-svg-icons'
 import { createApp } from 'vue'
 import { createPinia } from 'pinia'
 import { 
@@ -10,13 +9,14 @@ import {
     faPhone, 
     faMapMarkerAlt,
     faDesktop,
+    faFlask,
     faServer,
     faCloud,
     faMagic,
     faBullhorn,
     faPalette
   } from '@fortawesome/free-solid-svg-icons'
-import { faGithub } from '@fortawesome/free-brands-svg-icons'
+import { faGithub, faWordpress, faVuejs } from '@fortawesome/free-brands-svg-icons'
 import App from './App.vue'
 import router from './router'
 
@@ -30,7 +30,10 @@ library.add(
     faMagic,
     faBullhorn,
     faPalette,
-    faGithub
+    faGithub,
+    faVuejs,
+    faWordpress,
+    faFlask
   )
 
 const app = createApp(App)

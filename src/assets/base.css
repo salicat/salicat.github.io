@@ -1,7 +1,11 @@
-/* color palette from <https://github.com/vuejs/theme> */
+/* ===================================================
+   1. Variables, Reset y Base
+=================================================== */
 :root {
-  --base-font: 1rem;    /* 16px por defecto */
-  --scale-ratio: 1.25;  /* Proporción áurea */
+  --base-font: 1rem; /* 16px base */
+  --scale-ratio: 1.25;
+
+  /* Paleta principal */
   --vt-c-white: #ffffff;
   --vt-c-white-soft: #f8f8f8;
   --vt-c-white-mute: #f2f2f2;
@@ -9,16 +13,20 @@
   --vt-c-black-soft: #222222;
   --vt-c-black-mute: #282828;
   --vt-c-indigo: #2c3e50;
+
+  /* Dividers */
   --vt-c-divider-light-1: rgba(60, 60, 60, 0.29);
   --vt-c-divider-light-2: rgba(60, 60, 60, 0.12);
   --vt-c-divider-dark-1: rgba(84, 84, 84, 0.65);
   --vt-c-divider-dark-2: rgba(84, 84, 84, 0.48);
+
+  /* Texto */
   --vt-c-text-light-1: var(--vt-c-indigo);
   --vt-c-text-light-2: rgba(60, 60, 60, 0.66);
   --vt-c-text-dark-1: var(--vt-c-white);
   --vt-c-text-dark-2: rgba(235, 235, 235, 0.64);
 
-  /* semantic colors */
+  /* Colores semánticos */
   --color-background: var(--vt-c-white);
   --color-background-soft: var(--vt-c-white-soft);
   --color-background-mute: var(--vt-c-white-mute);
@@ -26,56 +34,59 @@
   --color-border-hover: var(--vt-c-divider-light-1);
   --color-heading: var(--vt-c-text-light-1);
   --color-text: var(--vt-c-text-light-1);
+
   --section-gap: 160px;
 }
-html {
-  font-size: 100%; /* 16px por defecto, pero respeta ajustes del usuario */
-}
 
+html {
+  font-size: 100%; /* 16px por defecto */
+}
 body {
-  font-size: 1rem; /* Hereda de html */
+  font-size: 1rem; /* hereda de html */
 }
 
 h1 {
   font-size: calc(var(--base-font) * 2.488); /* ≈ 39.8px */
   line-height: 1.2;
 }
-
 h2 {
   font-size: calc(var(--base-font) * 2.074); /* ≈ 33.2px */
   line-height: 1.3;
 }
-
 p {
-  font-size: var(--base-font); /* 16px */
+  font-size: var(--base-font);
   line-height: 1.6;
 }
+
+/* Responsive base font */
 @media (max-width: 768px) {
   :root {
-    --base-font: 0.9rem;  /* 14.4px base */
+    --base-font: 0.9rem; /* ≈14.4px */
   }
-  
   h1 {
-    font-size: calc(var(--base-font) * 2); /* 28.8px */
+    font-size: calc(var(--base-font) * 2);
   }
-  
   h2 {
-    font-size: calc(var(--base-font) * 1.75); /* 25.2px */
+    font-size: calc(var(--base-font) * 1.75);
   }
 }
+
+/* Dark mode */
 @media (prefers-color-scheme: dark) {
   :root {
     --color-background: var(--vt-c-black);
     --color-background-soft: var(--vt-c-black-soft);
     --color-background-mute: var(--vt-c-black-mute);
+
     --color-border: var(--vt-c-divider-dark-2);
     --color-border-hover: var(--vt-c-divider-dark-1);
+
     --color-heading: var(--vt-c-text-dark-1);
     --color-text: var(--vt-c-text-dark-2);
   }
 }
 
-/* Base styles */
+/* Reset básico */
 *,
 *::before,
 *::after {
@@ -84,68 +95,66 @@ p {
   font-weight: normal;
 }
 
+/* ===================================================
+   2. Layout General (Sidebar + Contenido)
+=================================================== */
 body {
   min-height: 100vh;
   background: var(--color-background);
   transition: color 0.5s, background-color 0.5s;
   line-height: 1.6;
-  font-family: Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, 
-    Ubuntu, Cantarell, 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  font-family: Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+    Oxygen, Ubuntu, Cantarell, 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
   font-size: 15px;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden; /* Evitar scroll horizontal */
 }
 
-/* Layout structure */
+/* Contenedor principal (app-container) */
 .app-container {
   display: flex;
   min-height: 100vh;
   position: relative;
 }
 
-/* Sidebar styles */
+/* Sidebar fijo */
 nav {
-  width: 250px;
-  height: 100vh;
+  width: 15vw;
   position: fixed;
   left: 0;
   top: 0;
+  height: 100vh;
   background: var(--vt-c-black-soft);
-  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  z-index: 1000;
   overflow-y: auto;
-  transform: translateX(0);
+  z-index: 1000;
+  transition: transform 0.3s ease;
 }
-
 nav.sidebar-hidden {
   transform: translateX(-100%);
 }
-
 .sidebar-content {
   padding: 20px;
 }
 
-/* Main content area */
+/* Contenido principal */
 main {
-  flex: 1;
+  margin-left: 80px;
+  width: calc(100% - 250px); 
   min-height: 100vh;
-  margin-left: 250px;
   padding: 2rem;
-  transition: margin-left 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: margin-left 0.3s ease, width 0.3s ease;
+  position: relative;
 }
 
+/* Router-view contenedor interno */
 .router-content {
-    width: 1200px; /* Ancho fijo */
-    min-height: 100vh;
-    margin: 0 auto;
-    padding: 40px 20px;
-    position: relative;
-    background: var(--color-background);
-    box-shadow: 0 0 30px rgba(0, 0, 0, 0.1);
-  }
+  width: 80vw;
+  min-height: 100vh;
+}
 
-/* Toggle button */
+/* Botón para ocultar Sidebar */
 .sidebar-toggle-btn {
   position: fixed;
   top: 20px;
@@ -157,14 +166,13 @@ main {
   padding: 10px 15px;
   border-radius: 5px;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: background-color 0.3s ease;
 }
-
 .sidebar-toggle-btn:hover {
   background-color: #1abc9c;
 }
 
-/* Navigation links */
+/* Enlaces del Sidebar */
 nav a {
   display: block;
   color: white;
@@ -173,188 +181,261 @@ nav a {
   border-bottom: 1px solid var(--color-border);
   transition: background 0.3s ease;
 }
-
 nav a:hover {
   background-color: #34495e;
 }
-
 nav a.router-link-exact-active {
   background-color: #16a085;
   color: white;
 }
-
 nav a.router-link-exact-active:hover {
   background-color: #1abc9c;
 }
 
-/* Responsive adjustments */
-@media (max-width: 1260px) {
-    .router-content {
-      width: 100%;
-      max-width: 1200px;
-      padding: 40px 15px;
-    }
-  }
-@media (min-width: 1024px) {
-  nav {
-    width: 200px;
-  }
-
-} 
+/* Responsive Layout */
 @media (max-width: 768px) {
   nav {
     width: 200px;
   }
-  
   main {
-    margin-left: 0;
+    margin-left: 200px;
+    width: calc(100% - 200px);
     padding: 1rem;
   }
-  
-  .sidebar-hidden + main {
-    margin-left: 0;
-  }
-  
   .sidebar-toggle-btn {
     left: 10px;
     padding: 8px 12px;
   }
 }
 
-
-
 /* ===================================================
-   Grid de Proyectos y Tarjetas
+   3. Grid de Proyectos (Portafolio)
 =================================================== */
 .projects-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    gap: 2.5rem;
-    margin-top: 3rem;
+  display: grid;
+  /* Por defecto: auto-fit con min 320px */
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 2.5rem;
+  margin-top: 3rem;
+  justify-items: center; /* Centra tarjetas si sobra espacio */
 }
 
+.project-grid :hover{
+  box-shadow: 10px 25px 50px -12px rgba(1, 255, 48, 0.943);
+}
+
+/* Forzar 3 columnas en desktop (>=1024px) */
+@media (min-width: 1024px) {
+  .projects-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* Tarjetas de proyecto */
 .project-card {
-    background: var(--light);
-    border-style: solid;
-    border-color: rgb(184, 183, 183);
-    border-radius: 16px;
-    overflow: hidden;
-    box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1);
-    transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease, color 0.3s ease;
-    position: relative;
-}
-
-.dark-mode .project-card {
-    box-shadow: 0 10px 15px -3px rgba(111, 255, 147, 0.178);
+  background: #1e1e1e;
+  border: 1px solid #333;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  /* Ancho máximo para no deformarse en pantallas enormes */
+  max-width: 350px;
 }
 
 .project-card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 25px 50px -12px rgba(0,0,0,0.15);
-}
-
-.dark-mode .project-card:hover {
-    box-shadow: 0 25px 50px -12px rgba(237, 237, 237, 0.15);
+  transform: translateY(-8px);
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.3);
 }
 
 .project-badge {
-    position: absolute;
-    top: 1rem;
-    right: 1rem;
-    background-color: rgb(80, 157, 3);
-    color: white;
-    padding: 0.4rem 1rem;
-    border-radius: 20px;
-    font-size: 0.9rem;
-    font-weight: 600;
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background-color: #16a085;
+  color: #020000;
+  padding: 0.4rem 1rem;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-transform: uppercase;
 }
 
 .project-thumbnail {
-    width: 100%;
-    height: 240px;
-    object-fit: cover;
-    border-bottom: 4px solid var(--accent);
-}
-
-.project-icon {
-    font-size: 1.5rem;
-    color: var(--dark);
-    transition: color 0.3s ease;
-}
-
-.dark-mode .project-icon {
-    color: var(--light);
-}
-
-.dark-mode .fa-github {
-    color: white;
-    filter: brightness(1.5);
-}
-
-.dark-mode .fa-external-link-alt{
-    color: white !important;
-    filter: brightness(1.5);
-}
-
-.icon-text {
-    color: var(--dark); /* Color en modo claro */
-    transition: color 0.3s ease;
-}
-
-.dark-mode .icon-text {
-    color: white; /* Color en modo oscuro */
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  border-bottom: 3px solid #16a085;
 }
 
 .project-content {
-    padding: 1.5rem;
-    color: white;
+  padding: 1.5rem;
+  color: #f8f8f8;
+  flex: 1;
+  text-align: center;
 }
+
+.project-content h3 {
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  color: #fff;
+}
+
+/* Stack de tecnologías */
+.tech-stack {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  margin-bottom: 1rem;
+  justify-content: center;
+}
+
+.tech-item {
+  background: #444;
+  color: #fff;
+  padding: 5px 10px;
+  border-radius: 15px;
+  font-size: 0.85rem;
+  transition: background-color 0.3s ease;
+}
+.tech-item:hover {
+  background-color: #16a085;
+}
+
+/* Botones en las tarjetas */
+.project-card a,
+.project-card button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #16a085;
+  color: #fff;
+  padding: 0.6rem 1rem;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  font-size: 0.95rem;
+  font-weight: 600;
+  transition: background-color 0.3s ease;
+  text-decoration: none;
+  margin-top: 1rem;
+}
+.project-card a:hover,
+.project-card button:hover {
+  background-color: #1abc9c;
+}
+.project-card a svg,
+.project-card button svg {
+  margin-right: 8px;
+  font-size: 1.1rem;
+}
+
 /* ===================================================
-   Grid de Habilidades
+   4. Grid de Habilidades
 =================================================== */
 .skills-container {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 2rem;
-  margin: 2rem auto;
+  padding: 1rem;
+}
+
+.skill_container {
+  position: relative;
+  cursor: pointer;
+  height: 200px;
+  perspective: 1200px; 
+  margin: 1rem;
+}
+
+.skill_container:hover .skill-item {
+  box-shadow: 0 25px 50px -12px rgba(13, 246, 56, 0.15);
+  transition: all 0.6s ease; 
+}
+
+.flip-box {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 0.8s cubic-bezier(0.4, 0.2, 0.2, 1); /* Animación más suave */
+  border-radius: 1rem;
+  overflow: hidden;
+}
+
+.flip-box-front,
+.flip-box-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 1.5rem;
 }
 
 .skill-item {
   background: rgba(255, 255, 255, 0.1);
-  padding: 2rem;
-  border-radius: 1rem;
-  backdrop-filter: blur(10px);
-  transition: transform 0.3s ease;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(12px);
+  color: white;
+  text-align: center;
+  transition: all 0.6s ease; 
+  height: 100%;
 }
 
-.skill-item:hover {
-  transform: translateY(-5px);
-}
-
-.skill-icon {
+.skill-icon{
   font-size: 2.5rem;
   color: #16a085;
-  margin-bottom: 1rem;
 }
 
+.flip-box-back {
+  color: white;
+  transform: rotateY(180deg);
+  background-color: #0073b1; 
+  border: 1px solid rgba(1, 253, 1, 0.3);
+}
+
+/* Ajustes tipográficos */
+.skill-item h3 {
+  font-size: 1.3rem;
+  margin: 0.8rem 0;
+}
+
+
+.skill-item p {
+  font-size: 0.95rem;
+  line-height: 1.5;
+  max-width: 85%;
+  margin: 0 auto;
+}
+
+/* Estado flipped */
+.flipped {
+  transform: rotateY(180deg) scale(0.98); /* Pequeño scale para efecto suave */
+}
 /* ===================================================
-   Secciones y Títulos
+   5. Secciones y Títulos
 =================================================== */
 section {
   padding: 5rem 2rem;
   max-width: 1200px;
   margin: 0 auto;
 }
-
 .section-title {
   font-size: 2.8rem;
   text-align: center;
   margin-bottom: 4rem;
   position: relative;
-  color: var(--vt-c-black);
+  color: #2c3e50;
   transition: color 0.3s ease;
 }
-
 .section-title:after {
   content: '';
   width: 60px;
@@ -368,107 +449,102 @@ section {
 }
 
 /* ===================================================
-   Estilos para el CV
+   6. CV en dos columnas, sin apilar en móvil
 =================================================== */
-.cv-wrapper{
+.cv {
+  display: grid;
+  grid-template-columns: 1fr 2fr; /* Siempre 2 columnas */
+  gap: 1rem;
+  max-width: 1000px;
+  margin: 40px auto;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  overflow-x: auto; /* scroll horizontal si no cabe en móvil */
+}
+
+/* Mantiene 2 columnas en móvil, forzando scroll horizontal */
+@media (max-width: 768px) {
+  .cv {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* Secciones internas del CV */
+.cv-wrapper {
   padding-left: 10%;
   padding-right: 10%;
 }
-
-.cv_seccion{
+.cv_seccion {
   padding-left: 3%;
   width: 100%;
   background-color: #0073b1;
 }
-
-.cv_seccion h2{
+.cv_seccion h2 {
   color: white !important;
   font-weight: bold;
   padding-top: 0.5%;
 }
-.name{
-  color: rgb(255, 255, 255);
+.name {
+  color: #fff;
   text-align: center;
   font-size: 4.4em;
 }
-
-.name h1{
+.name h1 {
   line-height: 0.9em;
   font-weight: bold;
   font-size: 2em;
 }
-
-.divider{
-  margin-top: 5%; 
+.divider {
+  margin-top: 5%;
   border-color: orange;
   height: 6px;
   background-color: orange;
 }
-.contact-info svg{
+.contact-info svg {
   color: orange;
 }
-
-.contact-info ul{
+.contact-info ul {
   margin-left: -5%;
 }
-
-.contact-info{
-  padding-left: -10px;
+.contact-info {
   font-size: 1.2em;
   color: white;
 }
- .contact-info li{
+.contact-info li {
   font-size: 1.2em;
   font-weight: bold;
   list-style-type: none;
 }
-
-.cv {
-  display: grid;
-  grid-template-columns: 1fr 2fr;
-  max-width: 1000px;
-  margin: 40px auto;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
 .cv .left-column {
   padding: 20px;
   font-size: 0.5em;
   background-color: #3194b8;
 }
-
-.cv .left-column h3{
+.cv .left-column h3 {
   font-size: 1.8em;
   font-weight: bold;
 }
-
-.cv .left-column li{
+.cv .left-column li {
   font-size: 1.5em;
   color: white;
   list-style-type: none;
 }
-
 .cv .right-column {
   padding: 20px;
   background-color: white;
 }
-
-.edu{
+.edu {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
 }
-
-.edu h3{
+.edu h3 {
   color: black !important;
 }
-
 .cv .left-column h2 {
   color: orange;
   font-size: 3.2em;
   font-weight: bold;
 }
-
 .cv h2 {
   font-size: 2em;
   color: #333;
@@ -476,7 +552,6 @@ section {
   padding-bottom: 5px;
   margin-bottom: 20px;
 }
-
 .cv-header {
   display: flex;
   justify-content: space-between;
@@ -486,12 +561,10 @@ section {
   padding: 20px;
   max-height: 60px;
 }
-
 .cv-header h1 {
   margin: 0;
   font-size: 28px;
 }
-
 .download-btn {
   background-color: #fff;
   color: #0073b1;
@@ -502,33 +575,27 @@ section {
   cursor: pointer;
   transition: background-color 0.3s ease;
 }
-
 .download-btn:hover {
   background-color: #e6e6e6;
 }
-
 .section {
   margin-bottom: 30px;
 }
-
 .section h3 {
   font-size: 20px;
   color: #0073b1;
   margin-bottom: 10px;
 }
-
 .section ul {
   list-style: none;
   padding: 0;
   margin: 0;
 }
-
 .section ul li {
   margin-bottom: 8px;
   padding-left: 25px;
   position: relative;
 }
-
 .section ul li:before {
   content: "\f00c";
   font-family: "Font Awesome 5 Free";
@@ -538,8 +605,6 @@ section {
   top: 0;
   color: #0073b1;
 }
-
-/* Tarjetas de experiencia y educación */
 .cv-card {
   background-color: #f9f9f9;
   border-left: 3px solid #0073b1;
@@ -547,33 +612,26 @@ section {
   margin-bottom: 20px;
   border-radius: 4px;
 }
-
 .cv-card h3 {
   margin-top: 0;
 }
-
 .cv-card p {
   margin: 5px 0;
 }
 
-h3{
-  font-weight: 600;
-  color: white;
-}
 /* ===================================================
-   Enlaces y Botones
+   7. Enlaces, Botones, Extras
 =================================================== */
 a {
   color: #0073b1;
   text-decoration: none;
   font-weight: bold;
 }
-
 a:hover {
   text-decoration: underline;
 }
 
-/* Botón flotante de WhatsApp */
+/* Botón flotante WhatsApp */
 .whatsapp-float {
   position: fixed;
   bottom: 30px;
@@ -590,7 +648,6 @@ a:hover {
   animation: pulse 2s infinite;
   text-decoration: none;
 }
-
 .whatsapp-float .fab {
   font-size: 30px;
   line-height: 1;
@@ -602,70 +659,26 @@ img {
   max-height: 200px;
 }
 
-/* Tamaños estándar */
+/* Iconos Font Awesome */
 .fa-icon {
   font-size: 1.2rem;
   margin-right: 0.5rem;
   color: #2c3e50;
 }
-
-/* Tamaños específicos */
 .icon-lg {
   font-size: 1.8rem;
 }
-
 .icon-brand {
   color: #181818;
 }
-
-/* Animación hover */
 .fa-icon:hover {
   opacity: 0.8;
   transition: opacity 0.3s ease;
 }
 
-/* ===================================================
-   Animaciones
-=================================================== */
+/* Animación */
 @keyframes pulse {
   0% { transform: scale(1); }
   50% { transform: scale(1.3); }
   100% { transform: scale(1); }
 }
-
-/* ===================================================
-   Media Queries para móviles
-=================================================== */
-@media (max-width: 768px) {
-  .name h1 {
-    font-size: 2em;
-  }
-  
-  .contact-info li {
-    font-size: 0.9em;
-  }
-  
-  .hero {
-    padding: 4rem 1rem 3rem;
-  }
-  
-  .section-title {
-    font-size: 2.2rem;
-  }
-  
-  .projects-grid {
-    grid-template-columns: 1fr;
-  }
-  
-  .whatsapp-float {
-    bottom: 20px;
-    right: 20px;
-    padding: 12px;
-    font-size: 1.2rem;
-  }
-  
-  .cv {
-    grid-template-columns: 1fr;
-  }
-}
-
