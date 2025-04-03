@@ -20,6 +20,8 @@
 						<font-awesome-icon :icon="['fab', 'vuejs']" />
 						<span>Ver Demo</span>
 					</a>
+					<br>
+					<button v-on:click="ask_mail"> Usuario de prueba </button>
 				</div>
 			</div>
 
@@ -80,5 +82,36 @@
 				</div>
 			</div>
 		</div>
+		<div v-if="modal" class="modal-overlay">
+			<div class="modal-content">
+				<h2>Ingresa tu correo</h2>
+				<input type="text" v-model="email" placeholder="Correo electrónico" />
+				<button @click="request_test">Enviar</button>
+				<button @click="modal = false">Cerrar</button>
+			</div>
+		</div>
 	</div>
 </template>
+<script>
+  export default {
+    data() {
+      return {
+		modal	:false,
+		email	: ""
+
+      };
+    },
+    methods: {
+		ask_mail() {
+			this.modal = true;
+			console.log("action motherfucker!!");
+		},
+		request_test() {
+			console.log("Enviando correo de prueba con email:", this.email);
+			this.modal = false;
+		}
+    }
+  };
+
+
+</script>
