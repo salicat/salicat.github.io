@@ -15,7 +15,7 @@
 						<span class="tech-item">AWS</span>
 						<span class="tech-item">Node.js</span>
 					</div>
-					<p>Plataforma de inversión en banca P2P con gestión, monitoreo en tiempo real y gráficos avanzados.</p>
+					<p style="text-align: justify;">Plataforma de inversión en banca P2P con gestión, monitoreo en tiempo real y gráficos avanzados.</p>
 					<a href="https://actyvalfront.onrender.com" target="_blank" class="btn-demo">
 						<font-awesome-icon :icon="['fab', 'vuejs']" />
 						<span>Ver Demo</span>
@@ -36,8 +36,9 @@
 						<span class="tech-item">FastAPI</span>
 						<span class="tech-item">OpenAI</span>
 						<span class="tech-item">Node.js</span>
+						<span class="tech-item">Google OCR</span>
 					</div>
-					<p>Aplicación inteligente para gestionar ingresos y egresos personales con IA que sugiere mejoras financieras.</p>
+					<p style="text-align: justify;">Aplicación de finanzas personales, Modulo (OCR) de reconocimiento de caracteres para creacion de registros.</p>
 					<a href="https://front-24qp.onrender.com" target="_blank" class="btn-demo">
 						<font-awesome-icon :icon="['fab', 'vuejs']" />
 						<span>Ver Demo</span>
@@ -74,7 +75,7 @@
 						<span class="tech-item">Optimización Velocidad</span>
 						<span class="tech-item">SEO</span>
 					</div>
-					<p>Sitio web para la propuesta comercial de Activos y Valores, con calculadora de créditos e inversión integrada.</p>
+					<p style="text-align: justify;">Sitio web para la propuesta comercial de Activos y Valores, con calculadora de créditos e inversión integrada.</p>
 					<a href="https://www.actyvalores.com" target="_blank" class="btn-demo">
 						<font-awesome-icon :icon="['fab', 'wordpress']" />
 						<span>Ver Página</span>
