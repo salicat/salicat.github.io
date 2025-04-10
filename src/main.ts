@@ -14,7 +14,9 @@ import {
     faCloud,
     faMagic,
     faBullhorn,
-    faPalette
+    faPalette,
+    faCodeBranch,
+    faPaintBrush
   } from '@fortawesome/free-solid-svg-icons'
 import { faGithub, faWordpress, faVuejs } from '@fortawesome/free-brands-svg-icons'
 import App from './App.vue'
@@ -33,7 +35,9 @@ library.add(
     faGithub,
     faVuejs,
     faWordpress,
-    faFlask
+    faFlask,
+    faCodeBranch,
+    faPaintBrush
   )
 
 const app = createApp(App)
