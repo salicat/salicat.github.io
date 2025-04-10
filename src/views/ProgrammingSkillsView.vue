@@ -10,10 +10,8 @@
 				<div class="flip-box-front skill-item">
 				  <font-awesome-icon :icon="['fas', 'desktop']" class="skill-icon" />
 				  <h3>Frontend</h3>
-				  <p>HTML5, CSS3, JavaScript</p>
 				</div>
 				<div class="flip-box-back skill-item">
-				  <h3>Personaliza Frontend</h3>
 				  <div 
 					class="editable-content" 
 					contenteditable="true" 
@@ -33,10 +31,8 @@
 				<div class="flip-box-front skill-item">
 				  <font-awesome-icon :icon="['fas', 'server']" class="skill-icon" />
 				  <h3>Backend</h3>
-				  <p>Python, SQL, APIRest</p>
 				</div>
 				<div class="flip-box-back skill-item">
-				  <h3>Personaliza Backend</h3>
 				  <div 
 					class="editable-content" 
 					contenteditable="true" 
@@ -56,10 +52,8 @@
 				<div class="flip-box-front skill-item">
 				  <font-awesome-icon :icon="['fas', 'cloud']" class="skill-icon" />
 				  <h3>DevOps</h3>
-				  <p>AWS, CI/CD, GitHub Actions</p>
 				</div>
 				<div class="flip-box-back skill-item">
-				  <h3>Personaliza DevOps</h3>
 				  <div 
 					class="editable-content" 
 					contenteditable="true" 
@@ -79,10 +73,8 @@
 				<div class="flip-box-front skill-item">
 				  <font-awesome-icon :icon="['fas', 'magic']" class="skill-icon" />
 				  <h3>No-Code Front</h3>
-				  <p>Wordpress / Elementor, Shopify</p>
 				</div>
 				<div class="flip-box-back skill-item">
-				  <h3>Personaliza No-Code</h3>
 				  <div 
 					class="editable-content" 
 					contenteditable="true" 
@@ -102,10 +94,8 @@
 				<div class="flip-box-front skill-item">
 				  <font-awesome-icon :icon="['fas', 'bullhorn']" class="skill-icon" />
 				  <h3>Marketing Skills</h3>
-				  <p>SEO/SEM, Analitycs</p>
 				</div>
 				<div class="flip-box-back skill-item">
-				  <h3>Personaliza Marketing</h3>
 				  <div 
 					class="editable-content" 
 					contenteditable="true" 
@@ -136,11 +126,11 @@
 		  5: false,
 		},
 		cardContents: {
-		  1: "🔧 Edita este texto<br><br>• Personaliza la info<br>• Usa emojis 🚀",
-		  2: "🔧 Edita este texto<br><br>• Personaliza la info<br>• Usa emojis 🚀",
-		  3: "🔧 Edita este texto<br><br>• Personaliza la info<br>• Usa emojis 🚀",
-		  4: "🔧 Edita este texto<br><br>• Personaliza la info<br>• Usa emojis 🚀",
-		  5: "🔧 Edita este texto<br><br>• Personaliza la info<br>• Usa emojis 🚀"
+		  1: "💻 Lenguajes: <br>• HTML5 📝 <br>• CSS3 🎨 <br>• JavaScript: ⚡ <br> <br> 💻 Frameworks/Bibliotecas: <br>• Vue.js <br>• ChartJS <br>• Bootstrap ",
+		  2: "⚙️ Lenguajes/Frameworks: <br> • Python 🐍 <br> • FastAPI 🚀 <br><br>⚙️ ORM y Bases de Datos: <br> • SQLAlchemy 🔗 <br>• PostgreSQL 🗄 (pgAdmin) <br><br>⚙️ Herramientas y Despliegue: <br>• Postman 📡 <br>• Sendgrid ✉️ <br>• AWS 💾 <br>• Firebase 🔐 <br><br>⚙️ Integraciones y Versionado: <br>• Google Vision ML 🤖 <br>• GitHub 🟣",
+		  3: "🔥 Infraestructura y Automatización: <br>• AWS 💾 <br>• CI/CD 🚀 <br>• GitHub Actions 🟣",
+		  4: "🚀 Herramientas No-Code: <br>• WordPress 🔷 <br>• Elementor 🛠 <br><br>🚀 Otras Herramientas: <br>• (Opcional: Wix, Shopify, etc.)",
+		  5: "📈 Áreas de Marketing: <br>• SEO 🔍 <br>• SEM 📊 <br>• Redes Sociales 🤳 <br><br>📈 Herramientas Analíticas: <br>• Google Analytics 📈 <br>• Estrategias de marketing digital 💡"
 		}
 	  };
 	},
