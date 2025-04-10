@@ -12,13 +12,12 @@
 				  <h3>Frontend</h3>
 				</div>
 				<div class="flip-box-back skill-item">
-				  <div 
-					class="editable-content" 
-					contenteditable="true" 
-					@click.stop
-					@input="updateCardContent(1, $event)"
-					v-html="cardContents[1]"
-				  ></div>
+					<div 
+						class="editable-content" 
+						@input="updateCardContent(1, $event)"
+						v-html="cardContents[1]"
+					></div>
+					<div class="scroll-indicator">⬇️</div>
 				</div>
 			  </div>
 			</div>
@@ -35,11 +34,10 @@
 				<div class="flip-box-back skill-item">
 				  <div 
 					class="editable-content" 
-					contenteditable="true" 
-					@click.stop
 					@input="updateCardContent(2, $event)"
 					v-html="cardContents[2]"
 				  ></div>
+				  <div class="scroll-indicator">⬇️</div>
 				</div>
 			  </div>
 			</div>
@@ -56,8 +54,6 @@
 				<div class="flip-box-back skill-item">
 				  <div 
 					class="editable-content" 
-					contenteditable="true" 
-					@click.stop
 					@input="updateCardContent(3, $event)"
 					v-html="cardContents[3]"
 				  ></div>
@@ -77,8 +73,6 @@
 				<div class="flip-box-back skill-item">
 				  <div 
 					class="editable-content" 
-					contenteditable="true" 
-					@click.stop
 					@input="updateCardContent(4, $event)"
 					v-html="cardContents[4]"
 				  ></div>
@@ -98,11 +92,10 @@
 				<div class="flip-box-back skill-item">
 				  <div 
 					class="editable-content" 
-					contenteditable="true" 
-					@click.stop
 					@input="updateCardContent(5, $event)"
 					v-html="cardContents[5]"
 				  ></div>
+				  <div class="scroll-indicator">⬇️</div>
 				</div>
 			  </div>
 			</div>

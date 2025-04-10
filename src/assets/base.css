@@ -428,7 +428,7 @@ nav a.router-link-exact-active:hover {
   
   /* Estilo para la cara frontal */
   .flip-box-front {
-	background: linear-gradient(145deg, #1a1a1a, #000);
+	background: linear-gradient(145deg, #00eaff3e, #000);
 	border: 2px solid #00E8FF;
 	box-shadow: 0 0 20px rgba(0,232,255,0.2);
 	display: flex;
@@ -440,8 +440,7 @@ nav a.router-link-exact-active:hover {
   
   /* Estilo para la cara trasera */
   .flip-box-back {
-	background: rgba(255,255,255,0.1) !important;
-	border: 2px solid red !important;
+	border: 2px solid #00E8FF !important;
 	color: #00E8FF;
 	transform: rotateY(180deg);
 	-webkit-transform: rotateY(180deg);
@@ -449,9 +448,30 @@ nav a.router-link-exact-active:hover {
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
-	padding: 1.5rem;
+	padding: 0.5rem;
+  cursor: pointer;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  }
+
+  .editable-content::-webkit-scrollbar {
+    display: none;
   }
   
+  .scroll-indicator {
+    position: absolute;
+    bottom: 5px;
+    left: 5%;
+    transform: translateX(-50%);
+    font-size: 1.2rem;
+    animation: bounce 1.5s infinite;
+    pointer-events: none;
+  }
+  @keyframes bounce {
+    0%, 100% { transform: translateX(-50%) translateY(0); }
+    50% { transform: translateX(-50%) translateY(6px); }
+  }
+
   /* Contenido editable */
   .editable-content {
 	width: 100%;
@@ -459,7 +479,6 @@ nav a.router-link-exact-active:hover {
 	min-height: 120px;
 	padding: 1rem;
 	overflow: auto;
-	border: 1px dashed rgba(0,232,255,0.3);
 	border-radius: 8px;
 	color: #00E8FF !important;
   }
