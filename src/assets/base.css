@@ -377,132 +377,137 @@ nav a.router-link-exact-active:hover {
    4. Grid de Habilidades
 =================================================== */
 .skills-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 2rem;
-  padding: 1rem;
-}
-
-.skill_container {
-  position: relative;
-  cursor: pointer;
-  height: 200px;
-  margin: 1rem;
-  perspective: 1000px;
-}
-
-.flip-box {
-  width: 100%;
-  height: 100%;
-  position: relative;
-  transform-style: preserve-3d;
-  transition: transform 0.8s cubic-bezier(0.4, 0.2, 0.2, 1);
-  border-radius: 1rem;
-  overflow: hidden;
-}
-
-/* Cara frontal */
-.flip-box-front {
-  background: linear-gradient(145deg, #1a1a1a, #000);
-  border: 2px solid #00E8FF;
-  box-shadow: 0 0 20px rgba(0, 232, 255, 0.2);
-  transform: rotateY(0deg);
-  backface-visibility: hidden;
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding: 1.5rem;
-  z-index: 2;
-}
-
-/* Cara trasera */
-.flip-box-back {
-  background: rgba(255, 255, 255, 0.1) !important; /* Fondo semi-transparente */
-  border: 2px solid red !important;  
-  color: #00E8FF;
-  transform: rotateY(180deg);
-  backface-visibility: hidden;
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding: 1.5rem;
-  z-index: 1;
-}
-
-.flip-box-back * {
-  color: white !important; /* Texto blanco forzado */
-  text-shadow: 0 0 5px black !important; /* Sombra para mejor contraste */
-}
-
-/* Estados flip */
-.flip-box.flipped {
-  transform: rotateY(180deg);
-}
-
-/* Efectos hover */
-.skill_container:hover .flip-box-front {
-  box-shadow: 0 0 30px rgba(0, 232, 255, 0.3);
-}
-
-.skill_container:hover .skill-icon {
-  transform: translateY(-5px) scale(1.1);
-}
-
-/* Contenido editable */
-.editable-content {
-  width: 100%;
-  height: 100%;
-  min-height: 120px;
-  padding: 1rem;
-  overflow: auto;
-  border: 1px dashed rgba(0, 232, 255, 0.3);
-  border-radius: 8px;
-  color: #00E8FF !important;
-}
-
-.editable-content:focus {
-  outline: none;
-  box-shadow: 0 0 10px rgba(0, 232, 255, 0.2);
-}
-
-/* Tipografía y elementos */
-.skill-item {
-  backdrop-filter: blur(12px);
-  text-align: center;
-  transition: all 0.6s ease;
-  height: 100%;
-}
-
-.skill-icon {
-  font-size: 2.5rem;
-  color: #00E8FF;
-  filter: drop-shadow(0 0 8px rgba(0, 232, 255, 0.4));
-  margin-bottom: 1rem;
-  transition: transform 0.3s ease;
-}
-
-.skill-item h3 {
-  font-size: 1.3rem;
-  margin: 0.8rem 0;
-  color: #00E8FF;
-  text-shadow: 0 0 10px rgba(0, 232, 255, 0.3);
-}
-
-.skill-item p {
-  font-size: 0.95rem;
-  color: rgba(0, 232, 255, 0.8);
-  line-height: 1.5;
-  max-width: 85%;
-  margin: 0 auto;
-}
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+	gap: 2rem;
+	padding: 1rem;
+  }
+  
+  .skill_container {
+	position: relative;
+	cursor: pointer;
+	height: 200px;
+	margin: 1rem;
+	perspective: 1000px;
+  }
+  
+  /* Contenedor externo del flip */
+  .flip-box {
+	width: 100%;
+	height: 100%;
+  }
+  
+  /* Contenedor interno que se rota */
+  .flip-box-inner {
+	position: relative;
+	width: 100%;
+	height: 100%;
+	text-align: center;
+	transition: transform 0.8s cubic-bezier(0.4, 0.2, 0.2, 1);
+	transform-style: preserve-3d;
+	/* Vendor prefixes para compatibilidad */
+	-webkit-transition: -webkit-transform 0.8s cubic-bezier(0.4, 0.2, 0.2, 1);
+	-webkit-transform-style: preserve-3d;
+  }
+  
+  .flip-box-inner.flipped {
+	transform: rotateY(180deg);
+	-webkit-transform: rotateY(180deg);
+  }
+  
+  /* Caras frontal y trasera */
+  .flip-box-front,
+  .flip-box-back {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	-webkit-backface-visibility: hidden;
+	backface-visibility: hidden;
+	border-radius: 1rem;
+  }
+  
+  /* Estilo para la cara frontal */
+  .flip-box-front {
+	background: linear-gradient(145deg, #1a1a1a, #000);
+	border: 2px solid #00E8FF;
+	box-shadow: 0 0 20px rgba(0,232,255,0.2);
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	padding: 1.5rem;
+  }
+  
+  /* Estilo para la cara trasera */
+  .flip-box-back {
+	background: rgba(255,255,255,0.1) !important;
+	border: 2px solid red !important;
+	color: #00E8FF;
+	transform: rotateY(180deg);
+	-webkit-transform: rotateY(180deg);
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	padding: 1.5rem;
+  }
+  
+  /* Contenido editable */
+  .editable-content {
+	width: 100%;
+	height: 100%;
+	min-height: 120px;
+	padding: 1rem;
+	overflow: auto;
+	border: 1px dashed rgba(0,232,255,0.3);
+	border-radius: 8px;
+	color: #00E8FF !important;
+  }
+  
+  .editable-content:focus {
+	outline: none;
+	box-shadow: 0 0 10px rgba(0,232,255,0.2);
+  }
+  
+  /* Elementos y tipografía */
+  .skill-item {
+	backdrop-filter: blur(12px);
+	text-align: center;
+	transition: all 0.6s ease;
+	height: 100%;
+  }
+  
+  .skill-icon {
+	font-size: 2.5rem;
+	color: #00E8FF;
+	filter: drop-shadow(0 0 8px rgba(0,232,255,0.4));
+	margin-bottom: 1rem;
+	transition: transform 0.3s ease;
+  }
+  
+  .skill-item h3 {
+	font-size: 1.3rem;
+	margin: 0.8rem 0;
+	color: #00E8FF;
+	text-shadow: 0 0 10px rgba(0,232,255,0.3);
+  }
+  
+  .skill-item p {
+	font-size: 0.95rem;
+	color: rgba(0,232,255,0.8);
+	line-height: 1.5;
+	max-width: 85%;
+	margin: 0 auto;
+  }
+  
+  /* Efectos hover */
+  .skill_container:hover .flip-box-front {
+	box-shadow: 0 0 30px rgba(0,232,255,0.3);
+  }
+  
+  .skill_container:hover .skill-icon {
+	transform: translateY(-5px) scale(1.1);
+  }
 /* ===================================================
    5. Secciones y Títulos
 =================================================== */
