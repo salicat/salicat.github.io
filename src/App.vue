@@ -15,7 +15,7 @@ const toggleSidebar = () => {
     <!-- Sidebar -->
     <nav :class="{ 'sidebar-hidden': !isSidebarVisible }">
       <div class="sidebar-content">
-        <HelloWorld msg="Carlos Cortes Sanchez" />
+        
         <RouterLink to="/main">Main</RouterLink>
         <RouterLink to="/skills">Skills</RouterLink>
         <RouterLink to="/experience">Job Experience</RouterLink>
@@ -37,6 +37,6 @@ const toggleSidebar = () => {
     <a href="https://wa.me/34637036828" class="whatsapp-float" target="_blank">
         <i class="fab fa-whatsapp wap"></i>
     </a>
-    
+
   </div>
 </template>
