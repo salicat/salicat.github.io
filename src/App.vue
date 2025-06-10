@@ -33,5 +33,10 @@ const toggleSidebar = () => {
         <RouterView />
       </div>
     </main>
+
+    <a href="https://wa.me/34637036828" class="whatsapp-float" target="_blank">
+        <i class="fab fa-whatsapp wap"></i>
+    </a>
+    
   </div>
 </template>
