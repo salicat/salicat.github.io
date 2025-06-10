@@ -23,7 +23,7 @@
         </div>
         </div>
         <div>
-            <h1 style="color: white;">Sobre Mí</h1>
+            <h1 class="section-title">Sobre Mí</h1>
         </div>
         <div>
             <p  class="module">
