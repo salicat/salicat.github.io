@@ -16,6 +16,7 @@ const toggleSidebar = () => {
     <nav :class="{ 'sidebar-hidden': !isSidebarVisible }">
       <div class="sidebar-content">
         <HelloWorld msg="Carlos Cortes Sanchez" />
+        <RouterLink to="/main">Main</RouterLink>
         <RouterLink to="/skills">Skills</RouterLink>
         <RouterLink to="/experience">Job Experience</RouterLink>
         <RouterLink to="/projects">Proyectos</RouterLink>
