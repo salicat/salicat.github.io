@@ -7,6 +7,7 @@ import vueDevTools from 'vite-plugin-vue-devtools'
 import path from 'path'
 
 export default defineConfig({
+  base: '/',
   plugins: [
     vue(),
     vueJsx(),
@@ -17,4 +18,7 @@ export default defineConfig({
       '@': path.resolve(__dirname, './src'),
     },
   },
+  build: {
+    outDir: 'dist'  // Carpeta de salida para el build
+  }
 })
