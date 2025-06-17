@@ -16,7 +16,7 @@ const toggleSidebar = () => {
     <nav :class="{ 'sidebar-hidden': !isSidebarVisible }">
       <div class="sidebar-content">
         <RouterLink to="/main">Main</RouterLink>
-		<RouterLink to="/cv">C.V.</RouterLink>
+		    <RouterLink to="/cv">C.V.</RouterLink>
         <RouterLink to="/skills">Skills</RouterLink>
         <RouterLink to="/projects">Proyectos</RouterLink>
 		<RouterLink to="/experience">Job Experience</RouterLink>
