@@ -94,22 +94,80 @@
 	</div>
 </template>
 <script>
+import axios from 'axios';
+import { useToast } from 'vue-toast-notification';
+
   export default {
     data() {
       return {
 		modal	:false,
 		email	: ""
-
       };
     },
     methods: {
 		ask_mail() {
 			this.modal = true;
-			console.log("action motherfucker!!");
-		},
+			},
 		request_test() {
-			console.log("Enviando correo de prueba con email:", this.email);
-			this.modal = false;
+			const toast = useToast();
+						
+			if (!this.validateEmail(this.email)) {
+				toast.error('Email inválido', {position: 'top-right'});
+				return;
+			}
+
+			const url = `https://actyback-0505163094da.herokuapp.com/testUser_request/${this.email}`;
+
+			// Mostrar toast de carga - CORRECCIÓN CLAVE
+			const loadingToast = toast.info('Enviando credenciales...', {
+				position: 'top-right',
+				duration: 0
+			});
+
+			axios.post(url)
+				.then(response => {
+					// Cerrar toast de carga CORRECTAMENTE
+					toast.clear();  // Cierra todos los toasts
+					
+					// Mostrar éxito
+					toast.success(response.data.message, {
+						position: 'top-right',
+						duration: 5000
+					});
+					
+					this.modal = false;
+				})
+				.catch(error => {
+					// Cerrar toast de carga CORRECTAMENTE
+					toast.clear();  // Cierra todos los toasts
+					
+					// Obtener mensaje de error
+					let errorMessage = 'Error al procesar la solicitud';
+					
+					// Manejo específico para la estructura de error
+					if (error.response && error.response.data) {
+						// Prioridad 1: 'detail'
+						if (error.response.data.detail) {
+							errorMessage = error.response.data.detail;
+						} 
+						// Prioridad 2: 'message'
+						else if (error.response.data.message) {
+							errorMessage = error.response.data.message;
+						}
+					}
+					
+					// Mostrar error
+					toast.error(errorMessage, {
+						position: 'top-right',
+						duration: 5000
+					});
+					
+					console.error("Detalles del error:", error);
+				});
+			},
+		validateEmail(email) {
+			const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+			return re.test(email);
 		}
     }
   };

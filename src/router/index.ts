@@ -29,7 +29,7 @@ const router = createRouter({
 			component:	CVView	
 		},
 		{
-			path:		'/main',
+			path:		'/',
 			name:		'main',
 			component:	MainView
 		}

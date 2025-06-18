@@ -1,3 +1,5 @@
+import Toast from 'vue-toast-notification'
+import 'vue-toast-notification/dist/theme-sugar.css'
 import './assets/main.css'
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
@@ -38,9 +40,10 @@ library.add(
     faFlask,
     faCodeBranch,
     faPaintBrush
-  )
+)
 
 const app = createApp(App)
+app.use(Toast)
 
 app.component('font-awesome-icon', FontAwesomeIcon)
 app.use(createPinia())
