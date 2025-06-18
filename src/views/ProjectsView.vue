@@ -16,7 +16,7 @@
 						<span class="tech-item">Node.js</span>
 					</div>
 					<p style="text-align: justify;">Plataforma de inversión en banca P2P con gestión, monitoreo en tiempo real y gráficos avanzados.</p>
-					<a href="https://actyvalfront.onrender.com" target="_blank" class="btn-demo">
+					<a href="http://app.actyvalores.com" target="_blank" class="btn-demo">
 						<font-awesome-icon :icon="['fab', 'vuejs']" />
 						<span>Ver Demo</span>
 					</a>
