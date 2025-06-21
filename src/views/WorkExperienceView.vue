@@ -14,8 +14,8 @@
     </div>
   </template>
   
-  <script setup lang="ts">
-  const jobs = [
+<script setup lang="ts">
+const jobs = [
     {
       company: "COVALTEC SAS",
       position: "Director Comercial - Propietario Único",
@@ -36,7 +36,7 @@
         "Manejé la relación comercial con clientes (Colombia) y proveedores (China)."
       ],
       achievement: "La empresa fue rentable y se vendió en 2019, sigue operando con éxito."
-    }
-  ];
-  </script>
+    },
+  	];
+</script>
   

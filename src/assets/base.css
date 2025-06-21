@@ -932,6 +932,11 @@ input:checked + .slider:before {
   Modulo Experience
 =================================================== */
 
+.experience{
+  margin-left: 3%;
+  margin-right: 3%;
+}
+
 .job_tit{
 	color: #23e3bd;
 	margin-top: 15px;
