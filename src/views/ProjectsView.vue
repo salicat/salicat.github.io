@@ -39,9 +39,9 @@
 						<span class="tech-item">Google OCR</span>
 					</div>
 					<p style="text-align: justify;">Aplicación de finanzas personales, Modulo (OCR) de reconocimiento de caracteres para creacion de registros.</p>
-					<a href="https://front-24qp.onrender.com" target="_blank" class="btn-demo">
-						<font-awesome-icon :icon="['fab', 'vuejs']" />
-						<span>Ver Demo</span>
+					<a href="https://github.com/salicat" target="_blank" class="btn-demo">
+						<font-awesome-icon :icon="['fab', 'github']" />
+						<span>Ver Repo</span>
 					</a>
 				</div>
 			</div>
