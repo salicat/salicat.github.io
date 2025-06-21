@@ -349,12 +349,17 @@ nav a.router-link-exact-active:hover {
 
 /* Estilos para el contenido del modal */
 .modal-content {
-  background-color: #fff;
-  padding: 20px;
-  border-radius: 8px;
-  max-width: 400px;
+  background: rgba(30, 30, 30, 0.75);     /* Semi-transparente para efecto glass */
+  backdrop-filter: blur(10px);            /* Blur extra dentro del modal */
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.7);
+  padding: 2rem;
+  max-width: 480px;
   width: 90%;
+  color: #f0f0f0;
   text-align: center;
+  animation: fadeInModal 0.3s ease-out;
 }
 
 .modal-content input {
@@ -372,6 +377,27 @@ nav a.router-link-exact-active:hover {
   border-radius: 4px;
   cursor: pointer;
 }
+
+.ext_button{
+  color: #f0f0f0;
+  background-color:#16a085
+}
+
+.modal-close {
+    position: absolute;
+    top: 0.75rem;
+    right: 0.75rem;
+    background: transparent;
+    border: none;
+    font-size: 1.5rem;
+    line-height: 1;
+    color: #ccc;
+    cursor: pointer;
+    transition: color 0.2s;
+  }
+  .modal-close:hover {
+    color: #ff6060;
+  }
 
 /* ===================================================
    4. Grid de Habilidades

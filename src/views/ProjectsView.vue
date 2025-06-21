@@ -21,7 +21,7 @@
 						<span>Ver Demo</span>
 					</a>
 					<br>
-					<button v-on:click="ask_mail"> Usuario de prueba </button>
+					<button  v-on:click="ask_mail"> Usuario de prueba </button>
 				</div>
 			</div>
 
@@ -93,11 +93,14 @@
 		</div>
 		<div v-if="credentialsModal" class="modal-overlay">
 			<div class="modal-content">
-				<h2>No pierdas estas credenciales</h2>
-				<p>Guárdalas ahora, porque no las volverás a ver luego.</p>
+				<button class="modal-close" aria-label="Close modal">&times;</button>
+				<h2>No pierdas estas credenciales!</h2>
+				<br>
 				<p><strong>Usuario:</strong> {{ credentials.username }}</p>
 				<p><strong>Contraseña temporal:</strong> {{ credentials.temp_password }}</p>
-				<button @click="credentialsModal = false">Cerrar</button>
+				<br>
+				<button class="ext_button" @click="goToActyvalores()" > Ir a Actyvalores </button>
+				<p>*El envio de credenciales por correo se canceló a partir del 25 de mayo de 2025.</p>
 			</div>
 		</div>
 	</div>
@@ -165,6 +168,9 @@ import { useToast } from 'vue-toast-notification';
 		validateEmail(email) {
 			const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 			return re.test(email);
+		},
+		goToActyvalores() {
+			window.open('http://app.actyvalores.com/login', '_blank');
 		}
     }
   };
