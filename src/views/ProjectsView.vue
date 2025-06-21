@@ -91,6 +91,15 @@
 				<button @click="modal = false">Cerrar</button>
 			</div>
 		</div>
+		<div v-if="credentialsModal" class="modal-overlay">
+			<div class="modal-content">
+				<h2>No pierdas estas credenciales</h2>
+				<p>Guárdalas ahora, porque no las volverás a ver luego.</p>
+				<p><strong>Usuario:</strong> {{ credentials.username }}</p>
+				<p><strong>Contraseña temporal:</strong> {{ credentials.temp_password }}</p>
+				<button @click="credentialsModal = false">Cerrar</button>
+			</div>
+		</div>
 	</div>
 </template>
 <script>
@@ -100,8 +109,13 @@ import { useToast } from 'vue-toast-notification';
   export default {
     data() {
       return {
-		modal	:false,
-		email	: ""
+		modal			:false,
+		email			: "",
+		credentialsModal: false,
+		credentials		: {
+			username: "",
+			temp_password: ""
+		}
       };
     },
     methods: {
@@ -117,6 +131,7 @@ import { useToast } from 'vue-toast-notification';
 			}
 
 			const url = `https://actyback-0505163094da.herokuapp.com/testUser_request/${this.email}`;
+			//const url = `http://127.0.0.1:8000/testUser_request/${this.email}`;
 
 			// Mostrar toast de carga - CORRECCIÓN CLAVE
 			const loadingToast = toast.info('Enviando credenciales...', {
@@ -125,46 +140,28 @@ import { useToast } from 'vue-toast-notification';
 			});
 
 			axios.post(url)
-				.then(response => {
-					// Cerrar toast de carga CORRECTAMENTE
-					toast.clear();  // Cierra todos los toasts
-					
-					// Mostrar éxito
-					toast.success(response.data.message, {
-						position: 'top-right',
-						duration: 5000
-					});
-					
-					this.modal = false;
-				})
-				.catch(error => {
-					// Cerrar toast de carga CORRECTAMENTE
-					toast.clear();  // Cierra todos los toasts
-					
-					// Obtener mensaje de error
-					let errorMessage = 'Error al procesar la solicitud';
-					
-					// Manejo específico para la estructura de error
-					if (error.response && error.response.data) {
-						// Prioridad 1: 'detail'
-						if (error.response.data.detail) {
-							errorMessage = error.response.data.detail;
-						} 
-						// Prioridad 2: 'message'
-						else if (error.response.data.message) {
-							errorMessage = error.response.data.message;
-						}
-					}
-					
-					// Mostrar error
-					toast.error(errorMessage, {
-						position: 'top-right',
-						duration: 5000
-					});
-					
-					console.error("Detalles del error:", error);
-				});
-			},
+			.then(({ data }) => {
+			toast.clear();
+			toast.success(data.message, { position: 'top-right', duration: 5000 });
+
+			// Si el backend devolvió credenciales, abrimos el modal correspondiente
+			if (data.credentials) {
+				this.credentials = data.credentials;
+				this.credentialsModal = true;
+			}
+
+			this.modal = false;
+			})
+			.catch(err => {
+			toast.clear();
+			let msg = 'Error al procesar la solicitud';
+			if (err.response && err.response.data) {
+				msg = err.response.data.detail || err.response.data.message || msg;
+			}
+			toast.error(msg, { position: 'top-right', duration: 5000 });
+			console.error(err);
+			});
+		},
 		validateEmail(email) {
 			const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 			return re.test(email);
